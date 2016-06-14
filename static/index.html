@@ -11,23 +11,31 @@
       href="http://kurushdubash.com/favicon.png">
  <title>Oski - Your Berkeley Assistant</title>
 
-<link rel="stylesheet" type="text/css" href="http://kurushdubash.com/Oski/goog1.css">
+<!-- <link rel="stylesheet" type="text/css" href="http://kurushdubash.com/Oski/goog1.css">
 <link rel="stylesheet" type="text/css" href="http://kurushdubash.com/Oski/goog2.css">
 <link rel="stylesheet" type="text/css" href="http://kurushdubash.com/Oski/oski.css">
+ -->
 
-
+<center>
 <body>
     <header class="intro">
         <div class="intro-body">
             <div class="container">
             <h1 class="brand-heading buzz">Oski</h1>
             <p class="intro-text grow">An intelligent Berkeley personal assistant.</p>
-            <h1><div id="transcript"> </div></h1>
-				<p>&nbsp;</p>
-				<div id="answer"> </div>
-				<div id="instructions">&nbsp;</div>
+
+            <form action="/api/log_entry" method="POST">
+              Dream Entry: <br>
+              <textarea type="submit" id="dream_text" value="dream_content" name="dream_content" cols="40" rows="5"></textarea>
+                </br>
+              <input type="submit" value="Log Entry" id="submit_button">
+            </form>
+
+            <h1>
+				<div id="instructions">&nbsp;</div> 
+                <div id="extra_info">&nbsp;</div> 
 				<p id="controls">
-				            <input type="submit" id="start_button" class="btn btn-circle page-scroll" value="Ask" />
+				<input type="submit" id="start_button" class="btn btn-circle page-scroll" value="Click to transcribe!" />
 				</p>
             </div>
         </div>
@@ -37,8 +45,19 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
 <center>
+<!-- 
+        <script type="text/javascript">
+            
+            $(document).ready(function(){
+                var url = "TEST";//"{{ return_url }}"
+                if( url != ""){
+                    $("#dream_text").val(url);
+                }
+            });
 
+        </script>
 
+ -->
 
 <script type="text/javascript">
 
@@ -67,7 +86,7 @@
                 $('#instructions').html('Listening...');
                 $('#start_button').html('Transcribe');
                 var elem = document.getElementById("start_button");
-                if (elem.value == "Ask") elem.value = "Go!";
+                if (elem.value == "Click to transcribe!") elem.value = "Working...";
             };
 
             recognition.onerror = function(event) {
@@ -81,7 +100,7 @@
             recognition.onresult = function(event) {
                 var interim_transcript = '';
                 var elem = document.getElementById("start_button");
-                if (elem.value == "Ask") elem.value = "Go!";
+                if (elem.value == "Click to transcribe!") elem.value = "Working...";
                 // Assemble the transcript from the array of results
                 for (var i = event.resultIndex; i < event.results.length; ++i) {
                     if (event.results[i].isFinal) {
@@ -90,20 +109,17 @@
                         interim_transcript += event.results[i][0].transcript;
                     }
                 }
-                var first_letter = final_transcript.charAt(0);
+                var first_letter = final_transcript.charAt(0).toUpperCase();
                 final_transcript =  first_letter + final_transcript.slice(1);
                 console.log("interim:  " + interim_transcript);
                 console.log("final:    " + final_transcript);
                 // update the web page
                 if(final_transcript.length > 0) {
-                    $('#transcript').html(final_transcript);
+                    $("#dream_text").val(final_transcript);
+                    $('#extra_info').html('Still transcribing. You can continue to talk');
                     var elem = document.getElementById("start_button");
-                    if (elem.value == "Go!") elem.value = "Ask";
-                    $.post("/api/GetQuestion",
-                        JSON.stringify({'data': final_transcript}),
-                        function( data ) {
-                            $('#answer').html(data);
-                        })
+                    elem.value = "Start Over";
+
                 }
             };
 
@@ -113,9 +129,10 @@
 
                 if (recognizing) {
                     recognition.stop();
-                    // myFunction('test');
-                    $('#start_button').html('Click to Start Again');
+                    var elem = document.getElementById("start_button");
+                    elem.value = "Click to transcribe!";
                     $('#instructions').html('');
+                    $('#extra_info').html('');
                     recognizing = false;
                 } else {
                     final_transcript = '';
@@ -123,7 +140,7 @@
                     // Request access to the User's microphone and Start recognizing voice input
                     recognition.start();
                     $('#instructions').html('Allow the browser to use your Microphone');
-                    $('#start_button').html('Wait');
+                    $('#start_button').html('Please allow microphone access');
 
                     $('#transcript').html('&nbsp;');
                 }
