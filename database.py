@@ -18,6 +18,7 @@ def get_user_id_from_accountd_DB(username, password):
 	accounts_database = conn.cursor()
 	query = "SELECT * FROM accounts WHERE (username=\'" + str(username) + "\' AND password=\'" + str(password) + "\')"
 	lookup = accounts_database.execute(query).fetchall()
+	print(lookup)
 	conn.commit()
 	conn.close()
 	if(len(lookup) == 0):
@@ -25,7 +26,7 @@ def get_user_id_from_accountd_DB(username, password):
 	else:
 		return lookup[0][2] 
 
-def add_user_to_accounts_DB(username, password):
+def add_user_to_accounts_DB(username, password, name, email):
 	conn = sqlite3.connect('accounts.db')
 	accounts_database = conn.cursor()
 	new_id = 0
@@ -34,7 +35,16 @@ def add_user_to_accounts_DB(username, password):
 		lookup = accounts_database.execute("SELECT * FROM accounts WHERE user_id=\'" + str(new_id) + "\'")
 		if(len(lookup.fetchall()) == 0):
 			break
-	accounts_database.execute("INSERT INTO accounts VALUES (\'" + str(username) + "\', \'" + str(password) + "\', \'" + str(new_id) + "\')")
+	accounts_database.execute("INSERT INTO accounts VALUES (\'" + str(username) + "\', \'" + str(password) + "\', \'" + str(new_id) + "\', \'" + str(name) + "\', \'" + str(email) + "\')")
 	conn.commit()
 	conn.close()
 
+def get_username(user_id):
+	conn = sqlite3.connect('accounts.db')
+	accounts_database = conn.cursor()
+	query = "SELECT * FROM accounts WHERE (user_id=\'" + str(user_id) + "\')"
+	lookup = accounts_database.execute(query).fetchall()
+	if(len(lookup) > 0):
+		return lookup[0][3]
+	else:
+		return None
