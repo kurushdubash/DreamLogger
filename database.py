@@ -1,50 +1,42 @@
-import datetime, sqlite3, init_db, random
-import sys
+from firebase import firebase
+import uuid, datetime
 
-def add_entry(dream, name="Kurush", user_id=1):
-	conn = sqlite3.connect('dreams.db')
-	dream_database = conn.cursor()
-	current_time = str(datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y"))
-	query = format_query(user_id, dream, current_time)
-	dream_database.execute(query)
-	conn.commit()
-	conn.close()
+firebase = firebase.FirebaseApplication('https://dream-logger-6b7c0.firebaseio.com/', None)
 
-def format_query(user_id, dream, time):
-	return "INSERT INTO dreams VALUES (\'" + str(user_id) + "\', \'" + str(dream) + "\' , \'"+ str(time) + "\')"
-
-def get_user_id_from_accountd_DB(username, password):
-	conn = sqlite3.connect('accounts.db')
-	accounts_database = conn.cursor()
-	query = "SELECT * FROM accounts WHERE (username=\'" + str(username) + "\' AND password=\'" + str(password) + "\')"
-	lookup = accounts_database.execute(query).fetchall()
-	print(lookup)
-	conn.commit()
-	conn.close()
-	if(len(lookup) == 0):
-		return 0
-	else:
-		return lookup[0][2] 
-
-def add_user_to_accounts_DB(username, password, name, email):
-	conn = sqlite3.connect('accounts.db')
-	accounts_database = conn.cursor()
-	new_id = 0
-	while(True):
-		new_id = random.randint(1, 1048576)
-		lookup = accounts_database.execute("SELECT * FROM accounts WHERE user_id=\'" + str(new_id) + "\'")
-		if(len(lookup.fetchall()) == 0):
-			break
-	accounts_database.execute("INSERT INTO accounts VALUES (\'" + str(username) + "\', \'" + str(password) + "\', \'" + str(new_id) + "\', \'" + str(name) + "\', \'" + str(email) + "\')")
-	conn.commit()
-	conn.close()
-
-def get_username(user_id):
-	conn = sqlite3.connect('accounts.db')
-	accounts_database = conn.cursor()
-	query = "SELECT * FROM accounts WHERE (user_id=\'" + str(user_id) + "\')"
-	lookup = accounts_database.execute(query).fetchall()
-	if(len(lookup) > 0):
-		return lookup[0][3]
-	else:
+# @username: username of the user you'd like to add
+# @password_hash: the hash of the password to the corresponding @username (Passwords should never be
+# stored in clear text)
+# @name: the name of the user corresponding to @username
+# @email: the email of the corresponding @username
+# returns: a dictionary of the user or dictionary of {error:errormessage}
+def add_user_to_DB(username, password_hash, name, email):
+	if(check_user_exists(username)): # User already exists!
 		return None
+	data = {'username':username, 'pass_hash': password_hash, 'name':name, 'email':email, 'dreams':[]}
+	return firebase.put('/users/', data=data, name=username)
+
+# @username: the username of the user you would like to remove from the database
+def remove_user_from_DB(username):
+	firebase.delete('/users/', name=username);
+
+# @username: is the username of which you want to retrieve all the dreams from 
+# returns: a dictionary of all the dreams for @username from dream_id: {time, dream_content}
+# if no dreams are found, returns None
+def get_dreams_from_user(username):
+	return firebase.get('/users/' + username, name='dreams')
+
+# @username: the username to add the entry to
+# @dream_content: the text of the dream to add
+# returns: dictionary of the dream added in form of dream_id: {time, dream_content}}
+def add_dream_entry(username, dream_content):
+	current_time = str(datetime.datetime.now().strftime("%I:%M:%S%p on %B %d, %Y"))
+	data = {'time': current_time, 'content': dream_content}
+	return firebase.put('/users/' + username + '/dreams', data=data, name=uuid.uuid1())
+
+# @username: the username to check
+# returns: True or False 
+def check_user_exists(username):
+	response = firebase.get("/users/", name=username)
+	if(response):
+		return True
+	return False
