@@ -61,8 +61,6 @@ class User():
 			return None	# valid token, but expired
 		except BadSignature:
 			facebook_user = db.check_if_FB_token(token)
-			print(facebook_user)
-			print(token)
 			if(facebook_user):
 				user = db.get_user(facebook_user)
 				return user
@@ -104,12 +102,29 @@ def facebook_login():
 	redirect_response = request.url
 	credentials = facebook.fetch_token(token_url, client_secret=client_secret,authorization_response=redirect_response)
 	facebook_token = credentials['access_token']
-	print(facebook_token)
 	r = facebook.get('https://graph.facebook.com/me?fields=id,name,link')
 	r = r.json()
 	db.add_user_to_DB(r['id'], facebook_token, r['name'], None, 'Facebook', facebook_token)
 	return render_template('facebook.html', data=r['name'])
 
+@app.route("/api/signup_fb", methods=["POST"])
+def signup_fb():
+	try:
+		username = request.json.get('id')
+		password = request.json.get('password')
+		name = request.json.get('name')
+		token = request.json.get('token')
+	except:
+		return jsonify({'result':ERROR_MSG + ": Failed to parse JSON request"}) 
+
+	if username is None or password is None or name is None or token is None:
+		return jsonify({'result':ERROR_MSG + ": Missing argument"}) # missing arguments
+	response = db.add_user_to_DB(username, password, name, None, 'Facebook', token)
+	if(not response):
+		response = {'result':ERROR_MSG + ": User already exists"}
+	else:
+		response = {'result': SUCCESS_MSG}
+	return jsonify(response)
 
 @app.route("/api/signup", methods=["POST"])
 def signup():
