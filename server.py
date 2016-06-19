@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, g #render_template
+from flask import Flask, request, jsonify, g, redirect, render_template
 import database as db
 from passlib.apps import custom_app_context as pwd_context
 from itsdangerous import (TimedJSONWebSignatureSerializer
@@ -9,7 +9,19 @@ app = Flask(__name__)
 SUCCESS_MSG = 'Success'
 ERROR_MSG = "There was an error with your request"
 
+client_id = '1034360859933880'
+client_secret = '8dab9add9410c546eace252989a7e6a9'
 
+authorization_base_url = 'https://www.facebook.com/dialog/oauth'
+token_url = 'https://graph.facebook.com/oauth/access_token'
+redirect_uri = 'http://localhost:5000/'  
+
+from requests_oauthlib import OAuth2Session
+from requests_oauthlib.compliance_fixes import facebook_compliance_fix
+facebook = OAuth2Session(client_id, redirect_uri=redirect_uri)
+facebook = facebook_compliance_fix(facebook)
+
+authorization_url, state = facebook.authorization_url(authorization_base_url)
 # extensions
 auth = HTTPBasicAuth()
 
@@ -17,7 +29,7 @@ auth = HTTPBasicAuth()
 app.config['SECRET_KEY'] = '3hX7LXop9kFoeVEF4BGi70XtGeG90trYj2ofzXuk' #firebase API Secret used
 
 class User():
-
+	token_ket = ''
 	dreams = {}
 
 	def __init__(self, username, password, email, name):
@@ -68,6 +80,22 @@ def get_auth_token():
 	token = g.user.generate_auth_token(600)
 	return jsonify({'token': token.decode('ascii'), 'duration': 6000})
 
+
+@app.route('/')
+def login():
+	try:
+		code = request.args.get('code')
+		if(code):
+			return facebook_login()
+	except:
+		print("failed to parse")
+	return render_template('index.html', data=authorization_url)
+
+@app.route('/callback/facebook')
+def facebook_login():
+	code = request.args.get('code')
+
+	return render_template('facebook.html')
 
 
 @app.route("/api/signup", methods=["POST"])
