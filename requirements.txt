@@ -1,6 +1,7 @@
 Flask==0.11.1
 requests==2.10.0
 python-firebase
+firebase-token-generator
 Flask-HTTPAuth==2.2.0
 Jinja2==2.7.1
 MarkupSafe==0.18
