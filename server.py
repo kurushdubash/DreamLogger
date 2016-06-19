@@ -1,9 +1,12 @@
-from flask import Flask, request, jsonify, g, redirect, render_template
+from flask import Flask, request, jsonify, g, render_template
+import json as json
 import database as db
 from passlib.apps import custom_app_context as pwd_context
 from itsdangerous import (TimedJSONWebSignatureSerializer
 						  as Serializer, BadSignature, SignatureExpired)
 from flask_httpauth import HTTPBasicAuth
+import os 
+os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 app = Flask(__name__)
 SUCCESS_MSG = 'Success'
@@ -29,13 +32,14 @@ auth = HTTPBasicAuth()
 app.config['SECRET_KEY'] = '3hX7LXop9kFoeVEF4BGi70XtGeG90trYj2ofzXuk' #firebase API Secret used
 
 class User():
-	token_ket = ''
+	facebook_token = ''
 	dreams = {}
 
-	def __init__(self, username, password, email, name):
+	def __init__(self, username, password, email, name, account_type='Standard'):
 		self.username = username
 		self.password_hash = self.hash_password(password)
 		self.email = email
+		self.account_type = account_type
 		self.name = name
 
 	def hash_password(self, password):
@@ -56,6 +60,12 @@ class User():
 		except SignatureExpired:
 			return None	# valid token, but expired
 		except BadSignature:
+			facebook_user = db.check_if_FB_token(token)
+			print(facebook_user)
+			print(token)
+			if(facebook_user):
+				user = db.get_user(facebook_user)
+				return user
 			return None	# invalid token
 
 		user = db.get_user(data['username'])
@@ -83,19 +93,22 @@ def get_auth_token():
 
 @app.route('/')
 def login():
-	try:
-		code = request.args.get('code')
-		if(code):
-			return facebook_login()
-	except:
-		print("failed to parse")
+
+	if request.url > request.url_root:
+		return facebook_login()
+
 	return render_template('index.html', data=authorization_url)
 
 @app.route('/callback/facebook')
 def facebook_login():
-	code = request.args.get('code')
-
-	return render_template('facebook.html')
+	redirect_response = request.url
+	credentials = facebook.fetch_token(token_url, client_secret=client_secret,authorization_response=redirect_response)
+	facebook_token = credentials['access_token']
+	print(facebook_token)
+	r = facebook.get('https://graph.facebook.com/me?fields=id,name,link')
+	r = r.json()
+	db.add_user_to_DB(r['id'], facebook_token, r['name'], None, 'Facebook', facebook_token)
+	return render_template('facebook.html', data=r['name'])
 
 
 @app.route("/api/signup", methods=["POST"])
