@@ -1,6 +1,6 @@
 from firebase import firebase
 import uuid, datetime
-from server import User
+from server import *
 
 firebase = firebase.FirebaseApplication('https://dream-logger-6b7c0.firebaseio.com/', None)
 
@@ -46,11 +46,12 @@ def check_user_exists(username):
 # returns: User object 
 def get_user(username):
 	response = firebase.get("/users/", name=username)
+	print (response)
 	if not response:
 		return None
 	user = User(response['username'], response['pass_hash'], response['email'], response['name'])
 	user.password_hash = response['pass_hash']
 	if 'dreams' in response:
-		user.dreams = response['dream']
+		user.dreams = response['dreams']
 	return user
 	
