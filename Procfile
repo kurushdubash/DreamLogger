@@ -1,1 +1,1 @@
-web: gunicorn server:app —log-file=-
+web: node static/server.js

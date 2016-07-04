@@ -2,7 +2,8 @@
 .form {
   position: relative;
   z-index: 1;
-  background: #FFFFFF;
+  /*background: #FFFFFF;*/
+  background: rgba(149,149,149,0.5);
   max-width: 500px;
   margin: 0 auto 10px;
   padding: 25px;
@@ -58,6 +59,9 @@
   transition: all 0.3 ease;
   cursor: pointer;
 }
+.form button:hover{
+  background: #d73534;
+}
 .form .message {
   margin: 15px 0 0;
   color: #b3b3b3;
@@ -66,6 +70,13 @@
 .form .message a {
   color: #EF3B3A;
   text-decoration: none;
+  font-weight: bold;
+}
+
+.form .message a:hover {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: bold;
 }
 .form .register-form {
   display: none;
@@ -75,7 +86,7 @@
   position: relative;
   z-index: 1;
   max-width: 400px;
-  margin: 0 auto;
+  margin: 0 auto; 
 }
 .container:before, .container:after {
   content: "";
