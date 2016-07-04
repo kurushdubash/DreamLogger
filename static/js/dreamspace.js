@@ -5,10 +5,4 @@ app.config(function($routeProvider) {
     .when("/login", {templateUrl : "partials/login.html"})
     .when("/about", {templateUrl : "partials/about.html"})
     .when("/signup", {templateUrl : "partials/signup.html"});
-    // .when("/green", {
-    //     templateUrl : "green.htm"
-    // })
-    // .when("/blue", {
-    //     templateUrl : "blue.htm"
-    // });
 });

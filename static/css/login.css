@@ -61,6 +61,7 @@
 }
 .form button:hover{
   background: #ff6666;
+  box-shadow: inset 0 0 0 2px #ff3333;
 }
 
 .form .facebook-button{
@@ -69,6 +70,7 @@
 
 .form .facebook-button:hover{
   background: #627aac;
+  box-shadow: inset 0 0 0 2px #3071A9;
 }
 .form .message {
   margin: 15px 0 0;
