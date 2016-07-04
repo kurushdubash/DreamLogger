@@ -3,21 +3,21 @@
 //     $scope.lastName = "Doe";
 // });
 
-app.config(function($routeProvider) {
-    $routeProvider
-    .when("/", {
-        templateUrl : "partials/login.html"
-    });
-    // .when("/red", {
-    //     templateUrl : "red.htm"
-    // })
-    // .when("/green", {
-    //     templateUrl : "green.htm"
-    // })
-    // .when("/blue", {
-    //     templateUrl : "blue.htm"
-    // });
-});
+// app.config(function($routeProvider) {
+//     $routeProvider
+//     .when("/", {
+//         templateUrl : "partials/login.html"
+//     });
+//     // .when("/red", {
+//     //     templateUrl : "red.htm"
+//     // })
+//     // .when("/green", {
+//     //     templateUrl : "green.htm"
+//     // })
+//     // .when("/blue", {
+//     //     templateUrl : "blue.htm"
+//     // });
+// });
 // app.config(['$routeProvider', function ($routeProvider) {
 //   $routeProvider
 //     // Home

@@ -15,7 +15,7 @@ video#bgvid {
     background-size: cover; 
 }
 
-/*@media screen and (max-device-width: 768px) {
+@media screen and (max-device-width: 768px) {
     html {
         background: url(../img/bg.jpg) #000 no-repeat center center fixed;
         -webkit-background-size: cover;
@@ -26,27 +26,35 @@ video#bgvid {
     #bgvid {
         display: none;
     }
-}*/
+}
 
-body {
+#custom-body {
     padding-top: 90px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+    background-color: transparent;
 }
 
 .navbar-fixed-top .nav {
     padding: 15px 0;
 }
 
-.navbar-fixed-top .navbar-brand {
+/*.navbar-fixed-top .navbar-brand {
     padding: 0 15px;
 }
+*/
 
 @media(min-width:768px) {
-    body {
+    .custom-body {
         padding-top: 100px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+        color: transparent;
+        background-color: transparent;
     }
 
     .navbar-fixed-top .navbar-brand {
         padding: 15px 0;
+    }
+
+    .   custom-body.modal-open {
+        overflow: hidden;
     }
 }
 

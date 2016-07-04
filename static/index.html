@@ -7,7 +7,8 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+    
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/reset.css">
     <script type="text/javascript" src="js/dreamspace.js"></script>
@@ -28,11 +29,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     </head>
-<body>
-<div class="container" ng-app="dreamspace"> <!-- ng-controller="mainCtrl"> -->
+<body id="custom-body">
+<div class="container-fluid" ng-app="dreamspace" ng-app="ngAnimate"> <!-- ng-controller="mainCtrl"> -->
     <!-- <h2 class="text-center main-heading">DreamSpace</h2> -->
     <div ng-include="'partials/header.html'"></div>
-            <div class="container-fluid" ng-view></div>
+            <div class="container" ng-view ng-enter></div>
      <!-- <div class="jumbotron" style="background-color:#000000"> -->
         
     <!-- </div> -->

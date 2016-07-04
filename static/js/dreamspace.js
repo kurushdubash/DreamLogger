@@ -1,12 +1,10 @@
-var app = angular.module("dreamspace", ["ngRoute"]);
+var app = angular.module("dreamspace", ["ngRoute", "ngAnimate"]);
 app.config(function($routeProvider) {
     $routeProvider
-    .when("/", {
-        templateUrl : "partials/login.html"
-    });
-    // .when("/red", {
-    //     templateUrl : "red.htm"
-    // })
+    .when("/", {templateUrl : "partials/login.html"})
+    .when("/login", {templateUrl : "partials/login.html"})
+    .when("/partials/login", {templateUrl : "partials/login.html"})
+    .when("partials/login", {templateUrl : "partials/login.html"});
     // .when("/green", {
     //     templateUrl : "green.htm"
     // })
