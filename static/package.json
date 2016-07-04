@@ -1,0 +1,12 @@
+{
+  "name": "dreamspace",
+  "private": true,
+  "version": "0.0.1",
+  "description": "A simple app to log your dreams",
+  "repository": "https://github.com/kurushdubash/dreamspace",
+  "license": "MIT",
+  "devDependencies": {
+    "serve-static": "^0",
+    "http-server": "^0.9.0"
+  }
+}

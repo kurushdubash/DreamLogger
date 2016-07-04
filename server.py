@@ -1,11 +1,11 @@
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, render_template
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def hello():
-	return app.send_static_file('index.html')
+	return render_template('index.html')
 
 @app.route('/js/<path:path>')
 def send_js(path):

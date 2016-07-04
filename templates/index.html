@@ -1,11 +1,53 @@
-<html>
-    <head>
-        <title>OAuth Flask Demo</title>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DreamSpace</title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+<!--     <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <script type="text/javascript" src="js/dreamSpace.js"></script>
+    <script type="text/javascript" src="js/mainCtrl.js"></script>
+ -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dreamSpace.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/mainCtrl.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+
+     <video autoplay loop id="bgvid">
+        <source src="img/bg.webm" type="video/webm">
+    </video>
+
+    <!-- jQuery -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
     </head>
-    <body>
-        <h1>OAuth Demo</h1>
-            <h2>I don't know you!</h2>
-            <p><a href="{{ data}}">Login with Facebook</a></p>
-            <p><a href="{{ data}}">Login with Twitter</a></p>
-    </body>
+<body>
+
+<div class="container" ng-app="dreamspace"> <!-- ng-controller="mainCtrl"> -->
+    <h2 class="text-center main-heading">DreamSpace</h2>
+
+    <div ng-include="'partials/header.html'"></div>
+            <div ng-view></div>
+     <!-- <div class="jumbotron" style="background-color:#000000"> -->
+        
+            <button type="button" class="btn btn-primary">Primary</button>
+    <!-- </div> -->
+    <!-- <div ng-include="'partials/footer.html'"></div> -->
+</div>
+
+
+</body>
 </html>

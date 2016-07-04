@@ -1,0 +1,246 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'd:\\Program Files\\NodeJS\\node.exe',
+1 verbose cli   'd:\\Program Files\\NodeJS\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install' ]
+2 info using npm@2.15.8
+3 info using node@v4.4.7
+4 verbose readDependencies loading dependencies from d:\Dropbox\Coding\dreamspace\package.json
+5 verbose install where, deps [ 'd:\\Dropbox\\Coding\\dreamspace',
+5 verbose install   [ 'serve-static', 'http-server' ] ]
+6 verbose install where, peers [ 'd:\\Dropbox\\Coding\\dreamspace', [] ]
+7 verbose installManyTop reading for lifecycle d:\Dropbox\Coding\dreamspace\package.json
+8 info preinstall dreamspace@0.0.1
+9 verbose installManyTop reading scoped package data from d:\Dropbox\Coding\dreamspace\node_modules\connect\package.json
+10 verbose installManyTop reading scoped package data from d:\Dropbox\Coding\dreamspace\node_modules\serve-static\package.json
+11 verbose readDependencies loading dependencies from d:\Dropbox\Coding\dreamspace\package.json
+12 verbose targetResolver reading package data from d:\Dropbox\Coding\dreamspace\node_modules\connect\package.json
+13 verbose targetResolver reading package data from d:\Dropbox\Coding\dreamspace\node_modules\serve-static\package.json
+14 silly cache add args [ 'serve-static@^0', null ]
+15 verbose cache add spec serve-static@^0
+16 silly cache add parsed spec Result {
+16 silly cache add   raw: 'serve-static@^0',
+16 silly cache add   scope: null,
+16 silly cache add   name: 'serve-static',
+16 silly cache add   rawSpec: '^0',
+16 silly cache add   spec: '>=0.0.0 <1.0.0',
+16 silly cache add   type: 'range' }
+17 silly addNamed serve-static@>=0.0.0 <1.0.0
+18 verbose addNamed ">=0.0.0 <1.0.0" is a valid semver range for serve-static
+19 silly addNameRange { name: 'serve-static', range: '>=0.0.0 <1.0.0', hasData: false }
+20 silly mapToRegistry name serve-static
+21 silly mapToRegistry using default registry
+22 silly mapToRegistry registry https://registry.npmjs.org/
+23 silly mapToRegistry data Result {
+23 silly mapToRegistry   raw: 'serve-static',
+23 silly mapToRegistry   scope: null,
+23 silly mapToRegistry   name: 'serve-static',
+23 silly mapToRegistry   rawSpec: '',
+23 silly mapToRegistry   spec: 'latest',
+23 silly mapToRegistry   type: 'tag' }
+24 silly mapToRegistry uri https://registry.npmjs.org/serve-static
+25 verbose addNameRange registry:https://registry.npmjs.org/serve-static not in flight; fetching
+26 silly cache add args [ 'http-server@^0.9.0', null ]
+27 verbose cache add spec http-server@^0.9.0
+28 silly cache add parsed spec Result {
+28 silly cache add   raw: 'http-server@^0.9.0',
+28 silly cache add   scope: null,
+28 silly cache add   name: 'http-server',
+28 silly cache add   rawSpec: '^0.9.0',
+28 silly cache add   spec: '>=0.9.0 <0.10.0',
+28 silly cache add   type: 'range' }
+29 silly addNamed http-server@>=0.9.0 <0.10.0
+30 verbose addNamed ">=0.9.0 <0.10.0" is a valid semver range for http-server
+31 silly addNameRange { name: 'http-server', range: '>=0.9.0 <0.10.0', hasData: false }
+32 silly mapToRegistry name http-server
+33 silly mapToRegistry using default registry
+34 silly mapToRegistry registry https://registry.npmjs.org/
+35 silly mapToRegistry data Result {
+35 silly mapToRegistry   raw: 'http-server',
+35 silly mapToRegistry   scope: null,
+35 silly mapToRegistry   name: 'http-server',
+35 silly mapToRegistry   rawSpec: '',
+35 silly mapToRegistry   spec: 'latest',
+35 silly mapToRegistry   type: 'tag' }
+36 silly mapToRegistry uri https://registry.npmjs.org/http-server
+37 verbose addNameRange registry:https://registry.npmjs.org/http-server not in flight; fetching
+38 verbose request uri https://registry.npmjs.org/serve-static
+39 verbose request no auth needed
+40 info attempt registry request try #1 at 6:49:13 PM
+41 verbose request id 984c172f0eae7c7e
+42 verbose etag "28A7D7DBG4T1C3FB613ZG48IY"
+43 http request GET https://registry.npmjs.org/serve-static
+44 verbose request uri https://registry.npmjs.org/http-server
+45 verbose request no auth needed
+46 info attempt registry request try #1 at 6:49:13 PM
+47 verbose etag "613RGFGD1RZMTXTZDOOW5LXTC"
+48 http request GET https://registry.npmjs.org/http-server
+49 http 304 https://registry.npmjs.org/http-server
+50 verbose headers { date: 'Mon, 04 Jul 2016 01:49:13 GMT',
+50 verbose headers   via: '1.1 varnish',
+50 verbose headers   'cache-control': 'max-age=300',
+50 verbose headers   etag: '"613RGFGD1RZMTXTZDOOW5LXTC"',
+50 verbose headers   age: '111',
+50 verbose headers   connection: 'keep-alive',
+50 verbose headers   'x-served-by': 'cache-lax1424-LAX',
+50 verbose headers   'x-cache': 'HIT',
+50 verbose headers   'x-cache-hits': '1',
+50 verbose headers   'x-timer': 'S1467596953.782678,VS0,VE0',
+50 verbose headers   vary: 'Accept-Encoding' }
+51 silly get cb [ 304,
+51 silly get   { date: 'Mon, 04 Jul 2016 01:49:13 GMT',
+51 silly get     via: '1.1 varnish',
+51 silly get     'cache-control': 'max-age=300',
+51 silly get     etag: '"613RGFGD1RZMTXTZDOOW5LXTC"',
+51 silly get     age: '111',
+51 silly get     connection: 'keep-alive',
+51 silly get     'x-served-by': 'cache-lax1424-LAX',
+51 silly get     'x-cache': 'HIT',
+51 silly get     'x-cache-hits': '1',
+51 silly get     'x-timer': 'S1467596953.782678,VS0,VE0',
+51 silly get     vary: 'Accept-Encoding' } ]
+52 verbose etag https://registry.npmjs.org/http-server from cache
+53 verbose get saving http-server to C:\Users\kurush\AppData\Roaming\npm-cache\registry.npmjs.org\http-server\.cache.json
+54 verbose correctMkdir C:\Users\kurush\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+55 http 304 https://registry.npmjs.org/serve-static
+56 verbose headers { date: 'Mon, 04 Jul 2016 01:49:13 GMT',
+56 verbose headers   via: '1.1 varnish',
+56 verbose headers   'cache-control': 'max-age=300',
+56 verbose headers   etag: '"28A7D7DBG4T1C3FB613ZG48IY"',
+56 verbose headers   age: '222',
+56 verbose headers   connection: 'keep-alive',
+56 verbose headers   'x-served-by': 'cache-lax1428-LAX',
+56 verbose headers   'x-cache': 'HIT',
+56 verbose headers   'x-cache-hits': '1',
+56 verbose headers   'x-timer': 'S1467596953.782909,VS0,VE0',
+56 verbose headers   vary: 'Accept-Encoding' }
+57 silly get cb [ 304,
+57 silly get   { date: 'Mon, 04 Jul 2016 01:49:13 GMT',
+57 silly get     via: '1.1 varnish',
+57 silly get     'cache-control': 'max-age=300',
+57 silly get     etag: '"28A7D7DBG4T1C3FB613ZG48IY"',
+57 silly get     age: '222',
+57 silly get     connection: 'keep-alive',
+57 silly get     'x-served-by': 'cache-lax1428-LAX',
+57 silly get     'x-cache': 'HIT',
+57 silly get     'x-cache-hits': '1',
+57 silly get     'x-timer': 'S1467596953.782909,VS0,VE0',
+57 silly get     vary: 'Accept-Encoding' } ]
+58 verbose etag https://registry.npmjs.org/serve-static from cache
+59 verbose get saving serve-static to C:\Users\kurush\AppData\Roaming\npm-cache\registry.npmjs.org\serve-static\.cache.json
+60 verbose correctMkdir C:\Users\kurush\AppData\Roaming\npm-cache correctMkdir already in flight; waiting
+61 silly addNameRange number 2 { name: 'serve-static', range: '>=0.0.0 <1.0.0', hasData: true }
+62 silly addNameRange versions [ 'serve-static',
+62 silly addNameRange   [ '1.0.0',
+62 silly addNameRange     '1.0.1',
+62 silly addNameRange     '1.0.2',
+62 silly addNameRange     '1.0.3',
+62 silly addNameRange     '1.0.4',
+62 silly addNameRange     '1.1.0',
+62 silly addNameRange     '1.2.0',
+62 silly addNameRange     '1.2.1',
+62 silly addNameRange     '1.2.2',
+62 silly addNameRange     '1.2.3',
+62 silly addNameRange     '1.3.0',
+62 silly addNameRange     '1.3.1',
+62 silly addNameRange     '1.3.2',
+62 silly addNameRange     '1.4.0',
+62 silly addNameRange     '1.4.1',
+62 silly addNameRange     '1.4.2',
+62 silly addNameRange     '1.4.3',
+62 silly addNameRange     '1.4.4',
+62 silly addNameRange     '1.5.0',
+62 silly addNameRange     '1.5.1',
+62 silly addNameRange     '1.5.2',
+62 silly addNameRange     '1.5.3',
+62 silly addNameRange     '1.5.4',
+62 silly addNameRange     '1.6.0',
+62 silly addNameRange     '1.6.1',
+62 silly addNameRange     '1.6.2',
+62 silly addNameRange     '1.6.3',
+62 silly addNameRange     '1.6.4',
+62 silly addNameRange     '1.7.0',
+62 silly addNameRange     '1.7.1',
+62 silly addNameRange     '1.7.2',
+62 silly addNameRange     '1.8.0',
+62 silly addNameRange     '1.8.1',
+62 silly addNameRange     '1.6.5',
+62 silly addNameRange     '1.9.0',
+62 silly addNameRange     '1.9.1',
+62 silly addNameRange     '1.9.2',
+62 silly addNameRange     '1.9.3',
+62 silly addNameRange     '1.10.0',
+62 silly addNameRange     '1.10.1',
+62 silly addNameRange     '1.10.2',
+62 silly addNameRange     '1.10.3',
+62 silly addNameRange     '1.11.0',
+62 silly addNameRange     '1.11.1' ] ]
+63 silly addNameRange number 2 { name: 'http-server', range: '>=0.9.0 <0.10.0', hasData: true }
+64 silly addNameRange versions [ 'http-server',
+64 silly addNameRange   [ '0.1.0',
+64 silly addNameRange     '0.1.1',
+64 silly addNameRange     '0.1.3',
+64 silly addNameRange     '0.2.1',
+64 silly addNameRange     '0.2.2',
+64 silly addNameRange     '0.2.3',
+64 silly addNameRange     '0.2.4',
+64 silly addNameRange     '0.2.5',
+64 silly addNameRange     '0.2.6',
+64 silly addNameRange     '0.2.9',
+64 silly addNameRange     '0.3.0',
+64 silly addNameRange     '0.4.0',
+64 silly addNameRange     '0.4.1',
+64 silly addNameRange     '0.5.0',
+64 silly addNameRange     '0.5.1',
+64 silly addNameRange     '0.5.2',
+64 silly addNameRange     '0.5.3',
+64 silly addNameRange     '0.5.5',
+64 silly addNameRange     '0.6.0',
+64 silly addNameRange     '0.6.1',
+64 silly addNameRange     '0.7.0',
+64 silly addNameRange     '0.7.1',
+64 silly addNameRange     '0.7.2',
+64 silly addNameRange     '0.7.3',
+64 silly addNameRange     '0.7.4',
+64 silly addNameRange     '0.7.5',
+64 silly addNameRange     '0.8.0',
+64 silly addNameRange     '0.8.1',
+64 silly addNameRange     '0.8.2',
+64 silly addNameRange     '0.8.3',
+64 silly addNameRange     '0.8.4',
+64 silly addNameRange     '0.8.5',
+64 silly addNameRange     '0.9.0' ] ]
+65 silly addNamed http-server@0.9.0
+66 verbose addNamed "0.9.0" is a plain semver version for http-server
+67 silly cache afterAdd http-server@0.9.0
+68 verbose afterAdd C:\Users\kurush\AppData\Roaming\npm-cache\http-server\0.9.0\package\package.json not in flight; writing
+69 verbose correctMkdir C:\Users\kurush\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+70 verbose afterAdd C:\Users\kurush\AppData\Roaming\npm-cache\http-server\0.9.0\package\package.json written
+71 verbose stack Error: No compatible version found: serve-static@'>=0.0.0 <1.0.0'
+71 verbose stack Valid install targets:
+71 verbose stack ["1.0.0","1.0.1","1.0.2","1.0.3","1.0.4","1.1.0","1.2.0","1.2.1","1.2.2","1.2.3","1.3.0","1.3.1","1.3.2","1.4.0","1.4.1","1.4.2","1.4.3","1.4.4","1.5.0","1.5.1","1.5.2","1.5.3","1.5.4","1.6.0","1.6.1","1.6.2","1.6.3","1.6.4","1.7.0","1.7.1","1.7.2","1.8.0","1.8.1","1.6.5","1.9.0","1.9.1","1.9.2","1.9.3","1.10.0","1.10.1","1.10.2","1.10.3","1.11.0","1.11.1"]
+71 verbose stack
+71 verbose stack     at installTargetsError (d:\Program Files\NodeJS\node_modules\npm\lib\cache\add-named.js:284:12)
+71 verbose stack     at next (d:\Program Files\NodeJS\node_modules\npm\lib\cache\add-named.js:262:19)
+71 verbose stack     at setData (d:\Program Files\NodeJS\node_modules\npm\lib\cache\add-named.js:236:5)
+71 verbose stack     at RES (d:\Program Files\NodeJS\node_modules\npm\node_modules\inflight\inflight.js:23:14)
+71 verbose stack     at f (d:\Program Files\NodeJS\node_modules\npm\node_modules\once\once.js:17:25)
+71 verbose stack     at fixName (d:\Program Files\NodeJS\node_modules\npm\lib\cache\add-named.js:29:5)
+71 verbose stack     at saved (d:\Program Files\NodeJS\node_modules\npm\lib\cache\caching-client.js:173:7)
+71 verbose stack     at d:\Program Files\NodeJS\node_modules\npm\node_modules\graceful-fs\polyfills.js:210:7
+71 verbose stack     at FSReqWrap.oncomplete (fs.js:82:15)
+72 verbose cwd d:\Dropbox\Coding\dreamspace
+73 error Windows_NT 6.1.7601
+74 error argv "d:\\Program Files\\NodeJS\\node.exe" "d:\\Program Files\\NodeJS\\node_modules\\npm\\bin\\npm-cli.js" "install"
+75 error node v4.4.7
+76 error npm  v2.15.8
+77 error code ETARGET
+78 error notarget No compatible version found: serve-static@'>=0.0.0 <1.0.0'
+78 error notarget Valid install targets:
+78 error notarget ["1.0.0","1.0.1","1.0.2","1.0.3","1.0.4","1.1.0","1.2.0","1.2.1","1.2.2","1.2.3","1.3.0","1.3.1","1.3.2","1.4.0","1.4.1","1.4.2","1.4.3","1.4.4","1.5.0","1.5.1","1.5.2","1.5.3","1.5.4","1.6.0","1.6.1","1.6.2","1.6.3","1.6.4","1.7.0","1.7.1","1.7.2","1.8.0","1.8.1","1.6.5","1.9.0","1.9.1","1.9.2","1.9.3","1.10.0","1.10.1","1.10.2","1.10.3","1.11.0","1.11.1"]
+78 error notarget
+78 error notarget This is most likely not a problem with npm itself.
+78 error notarget In most cases you or one of your dependencies are requesting
+78 error notarget a package version that doesn't exist.
+78 error notarget
+78 error notarget It was specified as a dependency of 'dreamspace'
+79 verbose exit [ 1, true ]
