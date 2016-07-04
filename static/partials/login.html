@@ -1,9 +1,16 @@
+<!-- <div class="alert alert-danger">
+  <strong>Error!</strong> You need to be signed in to access this resource. Please sign in below.
+</div> -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <div class="form">
   <div class="thumbnail"><img src="http://fusion.ddmcdn.com/kids/uploads/icon_earth.png"/></div>
   <form class="login-form">
-    <input type="text" placeholder="email"/>
-    <input type="password" placeholder="password"/>
+    <input type="text" id="email" placeholder="email"/>
+    <input type="password" id="password" placeholder="password"/>
     <button>Login</button>
+    <br></br>
+    <button id="facebook-button" class="facebook-button"><i class="fa fa-facebook-official" style="font-size:18px"></i>   Login with Facebook</button>
     <p class="message">Not registered? <a href="#/signup">Create an account.</a></p>
     <p class="message"><a href="#">Forgot your password?</a></p>
   </form>

@@ -60,7 +60,15 @@
   cursor: pointer;
 }
 .form button:hover{
-  background: #d73534;
+  background: #ff6666;
+}
+
+.form .facebook-button{
+  background: #3b5998;
+}
+
+.form .facebook-button:hover{
+  background: #627aac;
 }
 .form .message {
   margin: 15px 0 0;
