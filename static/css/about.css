@@ -1,0 +1,32 @@
+img{
+  background: rgba(139,252,255,0.1);
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 30px;
+  padding: 10px 10px 10px 10px;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  box-sizing: border-box;
+}
+
+img:hover{
+  background: rgba(139,252,255,0.8);
+}
+
+div {
+    -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
+    -moz-column-gap: 40px; /* Firefox */
+    column-gap: 40px;
+}
+
+about{
+  position: relative;
+  -webkit-column-count: 3;
+  -webkit-column-gap:   0px;
+  -moz-column-count:    3;
+  -moz-column-gap:      0px;
+  column-count:         3;
+  column-gap:           0px;  
+}
