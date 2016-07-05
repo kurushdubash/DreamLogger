@@ -238,21 +238,21 @@ body.slide-active {
 
 .page-transition.ng-enter {
     z-index:9999; 
-   -webkit-animation: fader-in .5s both ease-in;;
-   -moz-animation: fader-in .5s both ease-in;
-   -o-animation: fader-in .5s both ease-in;
-    animation: fader-in .5s both ease-in;
-    animation-delay: .5s;
+   -webkit-animation: fader-in .25s both ease-in;;
+   -moz-animation: fader-in .25s both ease-in;
+   -o-animation: fader-in .25s both ease-in;
+    animation: fader-in .25s both ease-in;
+    animation-delay: .25s;
     animation-timing-function: linear;
     animation-iteration-count: 1;
 }
 
 .page-transition.ng-leave {
     z-index:8888; 
-   -webkit-animation: fader-out .5s both ease-in;
-   -moz-animation: fader-out .5s both ease-in;
-   -o-animation: fader-out .5s both ease-in;
-    animation: fader-out .5s both ease-in;
+   -webkit-animation: fader-out .25s both ease-in;
+   -moz-animation: fader-out .25s both ease-in;
+   -o-animation: fader-out .25s both ease-in;
+    animation: fader-out .25s both ease-in;
     animation-timing-function: linear;
     animation-iteration-count: 1;
 }
