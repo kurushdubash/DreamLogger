@@ -13,13 +13,19 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#/dashboard"><span class="glyphicon glyphicon-globe"></span> My DreamSpace</a></li>
-                <li><a href="#/settings"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-                <li><a href="#/about"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+                <li><a href="#/dashboard" class="hidden-xs"><span class="glyphicon glyphicon-globe"></span> My DreamSpace</a></li>
+                <li><a href="#/dashboard" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse"><span class="glyphicon glyphicon-globe"></span> My DreamSpace</a></li>
+                <li><a href="#/settings" class="hidden-xs"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+                <li><a href="#/settings" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+                <li><a href="#/about" class="hidden-xs"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+                <li><a href="#/about" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-              <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              <li><a href="#/signup" class="hidden-xs"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li><a href="#/signup" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+
+              <li><a href="#/login" class="hidden-xs"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+              <li><a href="#/login" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
