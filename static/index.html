@@ -9,8 +9,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
     
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/reset.css">
     <script type="text/javascript" src="js/dreamspace.js"></script>
     <script type="text/javascript" src="js/mainCtrl.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
@@ -31,14 +29,9 @@
 
     </head>
 <body id="custom-body">
-<div class="container-fluid" ng-app="dreamspace" ng-app="ngAnimate"> <!-- ng-controller="mainCtrl"> -->
-    <!-- <h2 class="text-center main-heading">DreamSpace</h2> -->
+<div class="container" ng-app="dreamspace"> 
     <div ng-include="'partials/header.html'"></div>
-            <div class="fade" ng-view></div>
-     <!-- <div class="jumbotron" style="background-color:#000000"> -->
-        
-    <!-- </div> -->
-    <!-- <div ng-include="'partials/footer.html'"></div> -->
+        <div ng-view class="page-transition"></div>
 </div>
 
 
