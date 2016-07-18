@@ -1,11 +1,14 @@
+<div ng-include="'js/authcheck.js'"></div>
+
 <div class="form">
   <div class="thumbnail"><img src="http://fusion.ddmcdn.com/kids/uploads/icon_earth.png"/></div>
   <form class="login-form">
-    <input type="text" placeholder="name"/>
-    <input type="text" placeholder="email address"/>
-    <input type="password" placeholder="password"/>
-    <input type="password" placeholder="confirm password"/>
-    <button>Create</button>
+    <input type="text" id="name" placeholder="name"/>
+    <input type="text" id="email" placeholder="email address"/>
+    <input type="password" id="password" placeholder="password"/>
+    <input type="password" id="password-2" placeholder="confirm password"/>
+    <button id="quickstart-sign-up">Create</button>
     <p class="message">Already registered? <a href="#/login">Sign In</a></p>
   </form>
+  <!-- <pre><code id="quickstart-account-details">null</code></pre> -->
 </div>

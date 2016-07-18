@@ -15,6 +15,7 @@ video#bgvid {
     background-size: cover; 
 }
 
+
 @media screen and (max-device-width: 768px) {
     html {
         background: url(../img/bg.jpg) #000 no-repeat center center fixed;
@@ -238,21 +239,21 @@ body.slide-active {
 
 .page-transition.ng-enter {
     z-index:9999; 
-   -webkit-animation: fader-in .25s both ease-in;;
-   -moz-animation: fader-in .25s both ease-in;
-   -o-animation: fader-in .25s both ease-in;
-    animation: fader-in .25s both ease-in;
-    animation-delay: .25s;
+   -webkit-animation: fader-in .4s both linear;
+   -moz-animation: fader-in .4s both linear;
+   -o-animation: fader-in .4s both linear;
+    animation: fader-in .4s both linear;
+    animation-delay: .4s;
     animation-timing-function: linear;
     animation-iteration-count: 1;
 }
 
 .page-transition.ng-leave {
     z-index:8888; 
-   -webkit-animation: fader-out .25s both ease-in;
-   -moz-animation: fader-out .25s both ease-in;
-   -o-animation: fader-out .25s both ease-in;
-    animation: fader-out .25s both ease-in;
+   -webkit-animation: fader-out .4s both linear;
+   -moz-animation: fader-out .4s both linear;
+   -o-animation: fader-out .4s both linear;
+    animation: fader-out .4s both linear;
     animation-timing-function: linear;
     animation-iteration-count: 1;
 }
