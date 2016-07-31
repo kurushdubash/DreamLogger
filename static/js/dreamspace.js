@@ -167,13 +167,20 @@ function handleSignIn(){
 	});
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
+			var welcomeString = '';
+			if(user.mame != undefined){
+				welcomeString = ", " + user.name;
+			}
 			window.location.href = "#/dashboard";
 		}
   	});
 }
 
 var timer = null;
-function displayAlert(number, message){
+function displayAlert(number, message, timeout){
+	if(timeout == undefined){
+		timeout = 4000;
+	}
 	var alertType = '';
 	if(number == 0){
 		alertType = "alert-info";
@@ -186,7 +193,7 @@ function displayAlert(number, message){
 	};
 	var alertHtml = '<div class="alert ' + alertType + '"><strong> ' + message + '</strong> </div>';
 	document.getElementById('custom-alert').innerHTML = alertHtml;
-	timer = setTimeout(removeAlert, 4500);
+	timer = setTimeout(removeAlert, timeout);
 }
 
 function removeAlert(){
