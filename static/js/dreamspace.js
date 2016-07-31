@@ -6,6 +6,7 @@ app.config(function($routeProvider) {
 	.when("/about", {templateUrl : "partials/about.html"})
 	.when("/dashboard", {templateUrl : "partials/dashboard.html"})
 	.when("/recoverAuth", {templateUrl : "partials/recoverAuth.html"})
+	.when("/log", {templateUrl : "partials/log.html"})
 	.when("/signup", {templateUrl : "partials/signup.html"});
 });
 
@@ -42,18 +43,22 @@ function handleSignUp() {
 	var displayName = document.getElementById('name').value;
 	var regExp = '[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}';
 	if (email.length < 4 || regExp.search(email) == 0) {
+		var $btn = $('#create-button').button('loading');
 		alert('Please enter a valid email address.');
 		return;
 	}
 	if (password.length < 7) {
+		var $btn = $('#create-button').button('loading');
 		alert('Please enter a password with greater than 7 characters.');
 		return;
 	}
 	if (password != password_2){
+		var $btn = $('#create-button').button('loading');
 		alert('Your passwords do not match. Please verify your passwords. ')
 		return;
 	}
   	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+		var $btn = $('#create-button').button('loading');
 		var errorCode = error.code;
 		var errorMessage = error.message;
 		if (errorCode == 'auth/weak-password') {
@@ -94,6 +99,7 @@ function handleFacebookSignIn() {
           	// The signed-in user info.
           	var user = result.user;
         }).catch(function(error) {
+    		var $btn = $('#facebook-button').button('reset');
          	var errorCode = error.code;
           	var errorMessage = error.message;
             var email = error.email;
@@ -119,6 +125,7 @@ function handleSignIn(){
   	var email = document.getElementById('email').value;
   	var password = document.getElementById('password').value;
   	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    	var $btn = $('#sign-in-button').button('reset');
 	  	var errorCode = error.code;
 	  	var errorMessage = error.message;
 	  	console.log(errorMessage);
@@ -126,7 +133,7 @@ function handleSignIn(){
 	});
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
-		// window.location.href = "#/dashboard";
+			window.location.href = "#/dashboard";
 		}
   	});
 }
@@ -150,7 +157,7 @@ function initApp() {
   	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
 			console.log("Signed in");
-			document.getElementById('header-signup').innerHTML = '';
+			document.getElementById('header-signup').style.display='none';
 			document.getElementById('header-login').innerHTML = '<a href="#/" class="hidden-xs" onclick="javascript:handleSignOff()"><span class="glyphicon glyphicon-user"></span> Logoff</a>';
 			var displayName = user.displayName;
           	var email = user.email;
@@ -160,7 +167,7 @@ function initApp() {
           	var providerData = user.providerData;
 		} else {
 			// User is signed out.
-			document.getElementById('header-signup').innerHTML = '<a href="#/signup" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse"><span class="glyphicon glyphicon-user"></span> Sign Up</a>';
+			document.getElementById('header-signup').style.display='block';
 			document.getElementById('header-login').innerHTML = '<a href="#/login" class="hidden-xs"><span class="glyphicon glyphicon-user"></span> Login</a>';
 			console.log("Not signed in");
 		}
