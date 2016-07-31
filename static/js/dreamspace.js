@@ -18,10 +18,6 @@ var config = {
 	};
 firebase.initializeApp(config);
 
-function sendEmailVerification() {
-	firebase.auth().currentUser.sendEmailVerification().then(function() {});
-}
-
 function sendPasswordReset() {
 	var email = document.getElementById('email').value;
 	firebase.auth().sendPasswordResetEmail(email).then(function() {
@@ -39,24 +35,24 @@ function sendPasswordReset() {
 }
 
 function handleSignUp() {
+	var $btn = $('#create-button').button('loading');
 	var email = document.getElementById('email').value;
 	var password = document.getElementById('password').value;
 	var password_2 = document.getElementById("password-2").value;
 	var displayName = document.getElementById('name').value;
-	if (email.length < 4) {
-		alert('Please enter an email address.');
+	var regExp = '[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}';
+	if (email.length < 4 || regExp.search(email) == 0) {
+		alert('Please enter a valid email address.');
 		return;
 	}
 	if (password.length < 7) {
-		alert('Please enter a password with greater length than 7 characters.');
+		alert('Please enter a password with greater than 7 characters.');
 		return;
 	}
 	if (password != password_2){
-		alert('Your passwords do not match. Please confirm your password. ')
+		alert('Your passwords do not match. Please verify your passwords. ')
 		return;
 	}
-	// Sign in with email and pass.
-	// [START createwithemail]
   	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 		var errorCode = error.code;
 		var errorMessage = error.message;
@@ -67,7 +63,6 @@ function handleSignUp() {
 		}
 		console.log(error);
   	});
-  	sendemailverification();
   	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
 			window.location.href = "#/dashboard";
@@ -87,6 +82,7 @@ function handleSignOff(){
 }
 
 function handleFacebookSignIn() {
+    var $btn = $('#facebook-button').button('loading');
     if (!firebase.auth().currentUser) {
         var provider = new firebase.auth.FacebookAuthProvider();
         provider.addScope('user_birthday');
@@ -119,6 +115,7 @@ function handleFacebookSignIn() {
 }
 
 function handleSignIn(){
+    var $btn = $('#sign-in-button').button('loading');
   	var email = document.getElementById('email').value;
   	var password = document.getElementById('password').value;
   	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
@@ -129,7 +126,7 @@ function handleSignIn(){
 	});
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
-		window.location.href = "#/dashboard";
+		// window.location.href = "#/dashboard";
 		}
   	});
 }
@@ -148,30 +145,19 @@ function displayAlert(number, message){
 	var alertHtml = '<div class="alert ' + alertType + '"><strong> ' + message + '</strong> </div>';
 	document.getElementById('custom-alert').innerHTML = alertHtml;
 }
-/**
- * Handles registering callbacks for the auth status.
- *
- * This method registers a listener with firebase.auth().onAuthStateChanged. This listener is called when
- * the user is signed in or out, and that is where we update the UI.
- *
- * When signed in, we also authenticate to the Firebase Realtime Database.
- */
+
 function initApp() {
   	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
-
 			console.log("Signed in");
 			document.getElementById('header-signup').innerHTML = '';
 			document.getElementById('header-login').innerHTML = '<a href="#/" class="hidden-xs" onclick="javascript:handleSignOff()"><span class="glyphicon glyphicon-user"></span> Logoff</a>';
 			var displayName = user.displayName;
           	var email = user.email;
-          	var emailVerified = user.emailVerified;
           	var photoURL = user.photoURL;
-        	var isAnonymous = user.isAnonymous;
          	var uid = user.uid;
          	var refreshToken = user.refreshToken;
           	var providerData = user.providerData;
-			// window.location.href = "#/dashboard";
 		} else {
 			// User is signed out.
 			document.getElementById('header-signup').innerHTML = '<a href="#/signup" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse"><span class="glyphicon glyphicon-user"></span> Sign Up</a>';

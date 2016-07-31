@@ -5,9 +5,9 @@
   <form class="login-form">
     <input type="text" id="email" placeholder="email"/>
     <input type="password" id="password" placeholder="password"/>
-    <button onclick="javascript:handleSignIn()">Login</button>
+    <button id="sign-in-button" onclick="javascript:handleSignIn()" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Loading">Login</button>
     <br></br>
-    <button id="facebook-button" class="facebook-button" id="quickstart-sign-in" name="signin" onclick="javascript:handleFacebookSignIn()"><i class="fa fa-facebook-official" style="font-size:18px"></i>   Login with Facebook</button>
+    <button id="facebook-button" class="facebook-button" name="signin" onclick="javascript:handleFacebookSignIn()" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Loading"><i class="fa fa-facebook-official" style="font-size:18px"></i>   Login with Facebook</button>
     <p class="message">Not registered? <a href="#/signup">Create an account.</a></p>
     <p class="message"><a href="#/recoverAuth">Forgot your password?</a></p>
   </form>
