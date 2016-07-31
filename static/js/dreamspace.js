@@ -161,7 +161,7 @@ function handleSignIn(){
 	  	var errorCode = error.code;
 	  	var errorMessage = error.message;
 	  	console.log(errorMessage);
-	  	displayAlert(2, "Username or Password is incorrect.");
+	  	displayAlert(2, "Email or Password is incorrect.");
     	var $btn = $('#sign-in-button').button('reset');
     	return;
 	});
@@ -222,8 +222,16 @@ function initApp() {
          	var uid = user.uid;
          	var refreshToken = user.refreshToken;
           	var providerData = user.providerData;
+          	if(window.location.href.indexOf("#/login") > -1){
+				window.location.href = "#/dashboard";
+			}
 		} else {
 			// User is signed out.
+			console.log(window.location.href.indexOf("#/dashboard") > -1);
+			if(window.location.href.indexOf("#/dashboard") > -1){
+				window.location.href = "#/login";
+				displayAlert(2, "You need to be logged in to access this resource.");
+			}
 			document.getElementById('header-signup').style.display='block';
 			document.getElementById('header-login').style.display='block';
 			document.getElementById('header-logoff').style.display='none';
