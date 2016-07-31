@@ -167,6 +167,23 @@ color: #FFFFFF;
     text-align: center;
 }
 
+.alert-out{
+   -webkit-animation: fader-out .4s both linear;
+   -moz-animation: fader-out .4s both linear;
+   -o-animation: fader-out .4s both linear;
+    animation: fader-out .4s both linear;
+    animation-delay: .4s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    z-index:9999; 
+    width: 70%;
+    position: fixed;
+    left: 75%;
+    margin-left: -60%;
+    top: 10%;
+    text-align: center;
+}
+
 
 @media(max-width: 768px){
   .page-transition.ng-enter {

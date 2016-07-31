@@ -29,11 +29,11 @@ function sendPasswordReset() {
 		var errorCode = error.code;
 		var errorMessage = error.message;
 		if (errorCode == 'auth/invalid-email') {
-			alert(errorMessage);
+	  		displayAlert(2, errorMessage);
 		} else if (errorCode == 'auth/user-not-found') {
-			alert(errorMessage);
+	  		displayAlert(2, errorMessage);
 		}
-		console.log(error);
+		return;
 	});
 	window.location.href = "#/login";
 }
@@ -116,6 +116,7 @@ function handleFacebookSignIn() {
 	  			displayAlert(2, error);
           	}
     		var $btn = $('#facebook-button').button('reset');
+    		return;
     	});
     } else {
         firebase.auth().signOut();
@@ -137,6 +138,7 @@ function handleSignIn(){
 	  	console.log(errorMessage);
 	  	displayAlert(2, "Username or Password is incorrect.");
     	var $btn = $('#sign-in-button').button('reset');
+    	return;
 	});
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
@@ -145,6 +147,7 @@ function handleSignIn(){
   	});
 }
 
+var timer = null;
 function displayAlert(number, message){
 	var alertType = '';
 	if(number == 0){
@@ -158,6 +161,19 @@ function displayAlert(number, message){
 	};
 	var alertHtml = '<div class="alert ' + alertType + '"><strong> ' + message + '</strong> </div>';
 	document.getElementById('custom-alert').innerHTML = alertHtml;
+	timer = setTimeout(removeAlert, 3000);
+}
+
+function removeAlert(){
+	document.getElementById('custom-alert').className += " alert-out"
+	clearTimeout(timer);
+	timer = setTimeout(function(){ 
+		document.getElementById('custom-alert').innerHTML = '';
+		document.getElementById('custom-alert').className='ng-scope';	
+		}, 
+		1600
+	);
+
 }
 
 function initApp() {
