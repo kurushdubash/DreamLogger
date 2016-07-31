@@ -158,4 +158,38 @@ color: #FFFFFF;
     animation-delay: .4s;
     animation-timing-function: linear;
     animation-iteration-count: 1;
+    z-index:9999; 
+    width: 70%;
+    position: fixed;
+    left: 75%;
+    margin-left: -60%;
+    top: 10%;
+    text-align: center;
+}
+
+
+@media(max-width: 768px){
+  .page-transition.ng-enter {
+      z-index:9999; 
+     -webkit-animation: fader-in .48s both linear;
+     -moz-animation: fader-in .48s both linear;
+     -o-animation: fader-in .48s both linear;
+      animation: fader-in .48s both linear;
+      animation-delay: .48s;
+      animation-timing-function: linear;
+      animation-iteration-count: 1;
+  }
+
+  .page-transition.ng-leave {
+      z-index:8888; 
+     -webkit-animation: fader-out .48s both linear;
+     -moz-animation: fader-out .48s both linear;
+     -o-animation: fader-out .48s both linear;
+      animation: fader-out .48s both linear;
+      animation-timing-function: linear;
+      animation-iteration-count: 1;
+  }
+  .alert {
+    top: 7%;
+  }
 }

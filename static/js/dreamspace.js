@@ -38,6 +38,10 @@ function sendPasswordReset() {
 	window.location.href = "#/login";
 }
 
+function microphoneStart() {
+	document.getElementById('listening').innerHTML = "<div class='uil-ripple-css' style='transform:scale(0.96);'><div></div><div></div></div>"
+}
+
 function handleSignUp() {
 	var $btn = $('#create-button').button('loading');
 	var email = document.getElementById('email').value;
@@ -47,29 +51,30 @@ function handleSignUp() {
 	var regExp = '[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}';
 	if (email.length < 4 || regExp.search(email) == 0) {
 		var $btn = $('#create-button').button('loading');
-		alert('Please enter a valid email address.');
-		return;
+	  	displayAlert(2, "Please enter a valid email address.");
+		var $btn = $('#create-button').button('reset');
 	}
 	if (password.length < 7) {
 		var $btn = $('#create-button').button('loading');
-		alert('Please enter a password with greater than 7 characters.');
+	  	displayAlert(2, "Please enter a password with greater than 7 characters.");
+		var $btn = $('#create-button').button('reset');
 		return;
 	}
 	if (password != password_2){
 		var $btn = $('#create-button').button('loading');
-		alert('Your passwords do not match. Please verify your passwords. ')
+	  	displayAlert(2, "Your passwords do not match. Please verify your passwords.");
+		var $btn = $('#create-button').button('reset');
 		return;
 	}
   	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-		var $btn = $('#create-button').button('loading');
 		var errorCode = error.code;
 		var errorMessage = error.message;
 		if (errorCode == 'auth/weak-password') {
-			alert('The password is too weak.');
+	  		displayAlert(2, "This password is too weak.");
 		} else {
-			alert(errorMessage);
+	  		displayAlert(2, errorMessage);
 		}
-		console.log(error);
+		var $btn = $('#create-button').button('loading');
   	});
   	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
@@ -84,8 +89,7 @@ function handleSignOff(){
 	 	console.log("Signing out...");
 		window.location.href = "#/";
 	}, function(error) {
-		console.log("An error occured while signing out.");
-		console.log(error);
+	  	displayAlert(2, "An error occured while signing out.");
 	});
 }
 
@@ -102,16 +106,16 @@ function handleFacebookSignIn() {
           	// The signed-in user info.
           	var user = result.user;
         }).catch(function(error) {
-    		var $btn = $('#facebook-button').button('reset');
          	var errorCode = error.code;
           	var errorMessage = error.message;
             var email = error.email;
             var credential = error.credential;
 	        if (errorCode === 'auth/account-exists-with-different-credential') {
-    	        alert('You have already signed up with a different auth provider for that email.');
+	  			displayAlert(2, "You have already signed up with a different auth provider for that email.");
         	} else {
-            	console.error(error);
+	  			displayAlert(2, error);
           	}
+    		var $btn = $('#facebook-button').button('reset');
     	});
     } else {
         firebase.auth().signOut();
@@ -128,11 +132,11 @@ function handleSignIn(){
   	var email = document.getElementById('email').value;
   	var password = document.getElementById('password').value;
   	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-    	var $btn = $('#sign-in-button').button('reset');
 	  	var errorCode = error.code;
 	  	var errorMessage = error.message;
 	  	console.log(errorMessage);
-	  	displayAlert(2, "Username or Password is incorrect.")
+	  	displayAlert(2, "Username or Password is incorrect.");
+    	var $btn = $('#sign-in-button').button('reset');
 	});
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
@@ -161,7 +165,9 @@ function initApp() {
 		if (user) {
 			console.log("Signed in");
 			document.getElementById('header-signup').style.display='none';
-			document.getElementById('header-login').innerHTML = '<a href="#/" class="hidden-xs" onclick="javascript:handleSignOff()"><span class="glyphicon glyphicon-user"></span> Logoff</a>';
+			document.getElementById('header-login').style.display='none';
+			document.getElementById('header-logoff').style.display='block';
+
 			var displayName = user.displayName;
           	var email = user.email;
           	var photoURL = user.photoURL;
@@ -171,7 +177,8 @@ function initApp() {
 		} else {
 			// User is signed out.
 			document.getElementById('header-signup').style.display='block';
-			document.getElementById('header-login').innerHTML = '<a href="#/login" class="hidden-xs"><span class="glyphicon glyphicon-user"></span> Login</a>';
+			document.getElementById('header-login').style.display='block';
+			document.getElementById('header-logoff').style.display='none';
 			console.log("Not signed in");
 		}
   	});
