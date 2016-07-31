@@ -9,6 +9,9 @@ app.config(function($routeProvider) {
 	.when("/log", {templateUrl : "partials/log.html"})
 	.when("/signup", {templateUrl : "partials/signup.html"});
 });
+function h(e) {
+  $(e).css({'height':'auto','overflow-y':'hidden'}).height(e.scrollHeight);
+}
 
 // Initialize Firebase
 var config = {
