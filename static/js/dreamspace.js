@@ -100,7 +100,7 @@ function handleFacebookSignIn() {
         provider.addScope('user_birthday');
         provider.addScope('email');
         provider.addScope('public_profile');
-        firebase.auth().signInWithPopup(provider).then(function(result) {
+        firebase.auth().signInWithRedirect(provider).then(function(result) {
         	// This gives you a Facebook Access Token. You can use it to access the Facebook API.
         	var token = result.credential.accessToken;
           	// The signed-in user info.
@@ -161,7 +161,7 @@ function displayAlert(number, message){
 	};
 	var alertHtml = '<div class="alert ' + alertType + '"><strong> ' + message + '</strong> </div>';
 	document.getElementById('custom-alert').innerHTML = alertHtml;
-	timer = setTimeout(removeAlert, 3000);
+	timer = setTimeout(removeAlert, 4500);
 }
 
 function removeAlert(){
