@@ -100,24 +100,45 @@ function handleFacebookSignIn() {
         provider.addScope('user_birthday');
         provider.addScope('email');
         provider.addScope('public_profile');
-        firebase.auth().signInWithRedirect(provider).then(function(result) {
-        	// This gives you a Facebook Access Token. You can use it to access the Facebook API.
-        	var token = result.credential.accessToken;
-          	// The signed-in user info.
-          	var user = result.user;
-        }).catch(function(error) {
-         	var errorCode = error.code;
-          	var errorMessage = error.message;
-            var email = error.email;
-            var credential = error.credential;
-	        if (errorCode === 'auth/account-exists-with-different-credential') {
-	  			displayAlert(2, "You have already signed up with a different auth provider for that email.");
-        	} else {
-	  			displayAlert(2, error);
-          	}
-    		var $btn = $('#facebook-button').button('reset');
-    		return;
-    	});
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+			firebase.auth().signInWithRedirect(provider).then(function(result) {
+	        	// This gives you a Facebook Access Token. You can use it to access the Facebook API.
+	        	var token = result.credential.accessToken;
+	          	// The signed-in user info.
+	          	var user = result.user;
+	        }).catch(function(error) {
+	         	var errorCode = error.code;
+	          	var errorMessage = error.message;
+	            var email = error.email;
+	            var credential = error.credential;
+		        if (errorCode === 'auth/account-exists-with-different-credential') {
+		  			displayAlert(2, "You have already signed up with a different auth provider for that email.");
+	        	} else {
+		  			displayAlert(2, error);
+	          	}
+	    		var $btn = $('#facebook-button').button('reset');
+	    		return;
+	    	});
+		}else{
+			firebase.auth().signInWithPopup(provider).then(function(result) {
+        		// This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        		var token = result.credential.accessToken;
+          		// The signed-in user info.
+          		var user = result.user;
+        	}).catch(function(error) {
+         		var errorCode = error.code;
+          		var errorMessage = error.message;
+            	var email = error.email;
+            	var credential = error.credential;
+		        if (errorCode === 'auth/account-exists-with-different-credential') {
+		  			displayAlert(2, "You have already signed up with a different auth provider for that email.");
+	        	} else {
+		  			displayAlert(2, error);
+	          	}
+	    		var $btn = $('#facebook-button').button('reset');
+	    		return;
+    		});
+		}
     } else {
         firebase.auth().signOut();
     }
