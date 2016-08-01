@@ -114,9 +114,11 @@ textarea {
   }
 	.round-button-cancel {
 		margin-left: 15%;
+    line-height: 0em;
 	}
 	.round-button-accept {
     margin-right: 15%;
+    line-height: 0em;
 	}
 }
 
@@ -159,3 +161,5 @@ textarea {
   animation-timing-function: linear;
   animation-iteration-count: 100;
 }
+
+/*Use this for animation kurush https://codepen.io/FelixRilling/pen/qzfoc*/
