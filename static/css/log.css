@@ -17,16 +17,16 @@ textarea {
 	min-height: 20em;
 	height: 60%;
 	padding: 12px 20px;
-    box-sizing: border-box;
+  box-sizing: border-box;
 	overflow: auto;
-    border: 4px solid rgba(44,56,84,1);
-    border-radius: 4px;
-    background-color: rgba(44,56,80,0.5);
-    color: #FFFFFF;
+  border: 4px solid rgba(44,56,84,1);
+  border-radius: 4px;
+  background-color: rgba(44,56,80,0.5);
+  color: #FFFFFF;
 }
 
 .divtext-title {
-	min-height: 5em;
+	min-height: 3em;
 }
 
 @media screen and (max-device-width: 768px) {
