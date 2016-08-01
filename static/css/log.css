@@ -92,10 +92,7 @@ textarea {
   height: 100px;
 }
 
-.round-button .fa-lg {
-	font-size: 2.5em;
-  vertical-align: -30%;
-}
+
 .round-button-cancel {
 	width: 60px;
 	height: 60px;
@@ -108,16 +105,6 @@ textarea {
     height: 60px;
     margin-right: 50%;
     line-height: 1em;
-}
-
-.round-button-cancel .fa-lg {
-	font-size: 1.7em;
-	/*vertical-align: 1;*/
-}
-
-.round-button-accept .fa-lg {
-	font-size: 1.7em;
-	/*vertical-align: 1;*/
 }
 
 @media(max-width: 768px){
