@@ -51,7 +51,11 @@ function microphoneStart() {
 		document.getElementById('microphone-listener').innerHTML = '<i class="fa fa-microphone fa-lg"></i></button>';
 	}else{
 		document.getElementById('microphone-listener').className += " microphone-listening";
-		document.getElementById('microphone-listener').innerHTML = '<i class="fa fa-stop fa-lg" aria-hidden="true"></i>';	
+		var mobile = '';
+		if(!isMobile){
+			mobile = 'fa-lg';
+		}
+		document.getElementById('microphone-listener').innerHTML = '<i class="fa fa-stop "' + mobile + ' aria-hidden="true"></i>';	
 	}
 }
 
