@@ -43,7 +43,16 @@ function sendPasswordReset() {
 }
 
 function microphoneStart() {
-	document.getElementById('listening').innerHTML = "<div class='uil-ripple-css' style='transform:scale(0.96);'><div></div><div></div></div>"
+	var currentClasses = document.getElementById('microphone-listener').className;
+	console.log(currentClasses);
+	console.log(currentClasses.indexOf("microphone-listening") > -1);
+	if(currentClasses.indexOf("microphone-listening") > -1){
+		document.getElementById('microphone-listener').className = "round-button round-button-microphone";	
+		document.getElementById('microphone-listener').innerHTML = '<i class="fa fa-microphone fa-lg"></i></button>';
+	}else{
+		document.getElementById('microphone-listener').className += " microphone-listening";
+		document.getElementById('microphone-listener').innerHTML = '<i class="fa fa-stop fa-lg" aria-hidden="true"></i>';	
+	}
 }
 
 function handleSignUp() {
