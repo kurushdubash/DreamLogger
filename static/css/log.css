@@ -112,12 +112,12 @@ textarea {
 
 .round-button-cancel .fa-lg {
 	font-size: 1.7em;
-	vertical-align: 1;
+	/*vertical-align: 1;*/
 }
 
 .round-button-accept .fa-lg {
 	font-size: 1.7em;
-	vertical-align: 1;
+	/*vertical-align: 1;*/
 }
 
 @media(max-width: 768px){
