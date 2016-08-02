@@ -246,7 +246,7 @@ function cancelDream(){
 				text: "Are you sure you want to delete this dream entry?",   
 				type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   
 				confirmButtonText: "Delete",   
-				closeOnConfirm: false 
+				closeOnConfirm: true 
 			}, 
 			function(){window.location.href = "#/dashboard";}
 				);	
