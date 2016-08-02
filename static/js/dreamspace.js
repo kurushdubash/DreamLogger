@@ -39,7 +39,9 @@ function sendPasswordReset() {
 		}
 		return;
 	});
-	window.location.href = "#/login";
+	console.log("Hit");
+	displayAlert(0, "Instructions on how to reset your password have been sent to your account. Redirecting you to homepage now.", 5000);
+	setTimeout(function(){window.location.href = "#/login";}, 4000);
 }
 
 function microphoneStart() {
@@ -189,7 +191,6 @@ function handleSignIn(){
   	});
 }
 
-var timer = null;
 function displayAlert(number, message, timeout){
 	if(timeout == undefined){
 		timeout = 4000;
@@ -206,12 +207,38 @@ function displayAlert(number, message, timeout){
 	};
 	var alertHtml = '<div class="alert ' + alertType + '"><strong> ' + message + '</strong> </div>';
 	document.getElementById('custom-alert').innerHTML = alertHtml;
-	timer = setTimeout(removeAlert, timeout);
+	setTimeout(removeAlert, timeout);
 }
+
+function logDream(){
+	setTimeout(
+		function(){
+			swal({
+				title: "Dream Saved", 
+				text: "Your dream entry has been saved.", 
+				type:"success", 
+				timer:2000
+			});
+		}, 200);
+	setTimeout(function(){window.location.href = "#/dashboard";}, 2600);
+}
+
+function cancelDream(){
+	setTimeout(
+		function(){
+			swal({
+			    title: "Delete Dream Entry?",   
+				text: "Are you sure you want to delete this dream entry?",   
+				type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   
+				confirmButtonText: "Delete",   
+				closeOnConfirm: false 
+			});	
+		}, 200);
+}
+
 
 function removeAlert(){
 	document.getElementById('custom-alert').className += " alert-out"
-	clearTimeout(timer);
 	timer = setTimeout(function(){ 
 		document.getElementById('custom-alert').innerHTML = '';
 		document.getElementById('custom-alert').className='ng-scope';	
