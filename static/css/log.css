@@ -124,40 +124,40 @@ textarea {
 
 
 @keyframes listening{
-    0%   { border: 3.5px solid #f5f5f5;}
-    25%  { border: 3.5px solid #ADFF2F;}
-    50%  { border: 3.5px solid #FF1493;
+    0%   { border: 2.25px solid #f5f5f5;}
+    25%  { border: 2.25px solid #ADFF2F;}
+    50%  { border: 2.25px solid #FF1493;
            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
          }
-    75%  { border: 3.5px solid #FF4500;}
-    100% { border: 3.5px solid #f5f5f5;}
+    75%  { border: 2.25px solid #FF4500;}
+    100% { border: 2.25px solid #f5f5f5;}
 }
 @-o-keyframes listening{
-    0%   { border: 3.5px solid #f5f5f5;}
-    25%  { border: 3.5px solid #ADFF2F;}
-    50%  { border: 3.5px solid #FF1493;
+    0%   { border: 2.25px solid #f5f5f5;}
+    25%  { border: 2.25px solid #ADFF2F;}
+    50%  { border: 2.25px solid #FF1493;
            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
          }
-    75%  { border: 3.5px solid #FF4500;}
-    100% { border: 3.5px solid #f5f5f5;}
+    75%  { border: 2.25px solid #FF4500;}
+    100% { border: 2.25px solid #f5f5f5;}
 }
 @-moz-keyframes listening{
-    0%   { border: 3.5px solid #f5f5f5;}
-    25%  { border: 3.5px solid #ADFF2F;}
-    50%  { border: 3.5px solid #FF1493;
+    0%   { border: 2.25px solid #f5f5f5;}
+    25%  { border: 2.25px solid #ADFF2F;}
+    50%  { border: 2.25px solid #FF1493;
            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
          }
-    75%  { border: 3.5px solid #FF4500;}
-    100% { border: 3.5px solid #f5f5f5;}
+    75%  { border: 2.25px solid #FF4500;}
+    100% { border: 2.25px solid #f5f5f5;}
 }
 @-webkit-keyframes listening{
-    0%   { border: 3.5px solid #f5f5f5;}
-    25%  { border: 3.5px solid #ADFF2F;}
-    50%  { border: 3.5px solid #FF1493;
+    0%   { border: 2.25px solid #f5f5f5;}
+    25%  { border: 2.25px solid #ADFF2F;}
+    50%  { border: 2.25px solid #FF1493;
            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
          }
-    75%  { border: 3.5px solid #FF4500;}
-    100% { border: 3.5px solid #f5f5f5;}
+    75%  { border: 2.25px solid #FF4500;}
+    100% { border: 2.25px solid #f5f5f5;}
 }
 
 .microphone-listening {
