@@ -318,12 +318,13 @@ function logDream(){
 }
 
 function getCurDate(){
-	var jsTimestamp = Date.now();
-	var curDate = new Date();
-	curDate.setTime(jsTimestamp * 1000);
-	dateString = curDate.toUTCString();
-	return dateString;
+	var stringDate = '';
+	var date = new Date();
+	stringDate = date.getMonth() +"/"+ date.getDate() +"/"+ date.getFullYear();
+	stringDate += " " + date.getHours()	+":"+ date.getMinutes() +":"+ date.getSeconds();
+	return stringDate;
 }
+
 
 function cancelDream(){
 	if(!document.getElementById("dream_text").innerHTML.length > 0 && !document.getElementById("dream-title").innerHTML.length > 0 ){
