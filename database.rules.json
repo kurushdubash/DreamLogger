@@ -1,0 +1,19 @@
+// Updated 8-6-16 by Kurush Dubas
+// Authenticated Users should only access their respective
+// user account and their respective dreams
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    },
+    "dreams": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    }
+  }
+}

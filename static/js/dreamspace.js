@@ -46,13 +46,17 @@ function sendPasswordReset() {
 	setTimeout(function(){window.location.href = "#/login";}, 4000);
 }
 
+var recognition = new webkitSpeechRecognition();
+recognition.continuous = true;
+recognition.interimResults = true;
+recognition.maxAlternatives = 1;
+
 function microphoneStart() {
 	var currentClasses = document.getElementById('microphone-listener').className;
-	console.log(currentClasses);
-	console.log(currentClasses.indexOf("microphone-listening") > -1);
 	if(currentClasses.indexOf("microphone-listening") > -1){
 		document.getElementById('microphone-listener').className = "round-button round-button-microphone";	
 		document.getElementById('microphone-listener').innerHTML = '<i class="fa fa-microphone fa-lg"></i></button>';
+		recognition.stop();
 	}else{
 		document.getElementById('microphone-listener').className += " microphone-listening";
 		var mobile = '';
@@ -60,7 +64,57 @@ function microphoneStart() {
 			mobile = 'fa-lg';
 		}
 		document.getElementById('microphone-listener').innerHTML = '<i class="fa fa-stop "' + mobile + ' aria-hidden="true"></i>';	
+		webkitRecognition();
 	}
+}
+
+function webkitRecognition(){
+
+    recognition.onerror = function(event) {
+        console.log("There was a recognition error...");
+        displayAlert(2, "There was a recognition error.");
+    };
+
+    recognition.onend = function() {
+        recognizing = false;
+    };
+
+	var initial = capFirstLetter(document.getElementById("dream_text").innerHTML + " ");
+	var final_transcript = initial;
+
+	recognition.onresult = function(event) {
+		var interim_transcript = '';
+		if (typeof(event.results) == 'undefined') {
+	  		recognition.onend = null;
+	  		recognition.stop();
+	  		return;
+		}
+		for (var i = event.resultIndex; i < event.results.length; ++i) {
+			if (event.results[i].isFinal) {
+		    	final_transcript += event.results[i][0].transcript;
+
+		  	} else {
+		    	interim_transcript += event.results[i][0].transcript;
+		  	}
+		}
+		document.getElementById("dream_text").innerHTML = initial + capFirstLetter(interim_transcript);
+		if(final_transcript.length > initial.length){
+			final_transcript = capFirstLetter(final_transcript);
+			console.log(final_transcript);
+			document.getElementById("dream_text").innerHTML = final_transcript;
+			initial = document.getElementById("dream_text").innerHTML;
+		}
+		
+  	};
+	recognition.start();
+}
+
+
+function capFirstLetter(str) {
+    var string = str.replace(/.+?[\.\?\!](\s|$)/g, function (txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function handleSignUp() {
@@ -213,7 +267,7 @@ function displayAlert(number, message, timeout){
 }
 
 function logDream(){
-	if(!document.getElementById("dream-text").innerHTML.length > 0 && !document.getElementById("dream-title").innerHTML.length > 0 ){
+	if(!document.getElementById("dream_text").innerHTML.length > 0 && !document.getElementById("dream-title").innerHTML.length > 0 ){
 		swal({
 			title:"Empty Message",
 			text: "No content was entered.",
@@ -235,7 +289,7 @@ function logDream(){
 }
 
 function cancelDream(){
-	if(!document.getElementById("dream-text").innerHTML.length > 0 && !document.getElementById("dream-title").innerHTML.length > 0 ){
+	if(!document.getElementById("dream_text").innerHTML.length > 0 && !document.getElementById("dream-title").innerHTML.length > 0 ){
 		window.location.href = "#/dashboard";
 		return;
 	}
