@@ -23,11 +23,15 @@
             <ul class="nav navbar-nav navbar-right">
               <li id="header-signup"><a href="#/signup" class="hidden-xs"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 
-              <li ><a href="#/signup" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li id="header-signup"><a href="#/signup" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
               
               <li id="header-login"><a href="#/login" class="hidden-xs"><span class="glyphicon glyphicon-user"></span> Login</a></li>
 
-              <li><a href="#/login" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              <li id="header-login"><a href="#/login" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+              <li id="header-logoff"><a href="#/" class="hidden-xs" onclick="javascript:handleSignOff()"><span class="glyphicon glyphicon-user"></span> Logoff</a>
+
+              <li id="header-logoff"><a href="#/login" class="visible-xs" onclick="javascript:handleSignOff()" data-toggle="collapse" data-target=".navbar-collapse"><span class="glyphicon glyphicon-log-in"></span> Logoff</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
