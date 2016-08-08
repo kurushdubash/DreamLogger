@@ -9,6 +9,7 @@ app.config(function($routeProvider) {
 	.when("/log", {templateUrl : "partials/log.html"})
 	.when("/signup", {templateUrl : "partials/signup.html"});
 });
+
 function h(e) {
   $(e).css({'height':'auto','overflow-y':'hidden'}).height(e.scrollHeight);
 }
@@ -21,6 +22,13 @@ var config = {
 	storageBucket: "dream-logger-6b7c0.appspot.com",
 	};
 firebase.initializeApp(config);
+
+var displayName = '';
+var email = '';
+var photoURL = '';
+var uid = '';
+var refreshToken = '';
+var providerData = '';
 
 var isMobile = false;
 if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) 
@@ -69,9 +77,7 @@ function microphoneStart() {
 }
 
 function webkitRecognition(){
-
     recognition.onerror = function(event) {
-        console.log("There was a recognition error...");
         displayAlert(2, "There was a recognition error.");
     };
 
@@ -267,7 +273,29 @@ function displayAlert(number, message, timeout){
 }
 
 function logDream(){
-	if(!document.getElementById("dream_text").innerHTML.length > 0 && !document.getElementById("dream-title").innerHTML.length > 0 ){
+	try{
+		var postData = {
+			text: document.getElementById("dream_text").innerHTML,
+			timestamp: getCurDate(),
+			lucid: false,
+			notes: "",
+			title: document.getElementById("dream-title").innerHTML
+		}
+		var newPostKey = firebase.database().ref().child('dreams/' + uid + "/").push().key;
+		var updates = {};
+		updates['/dreams/' + uid + "/" + newPostKey] = postData;
+	  	firebase.database().ref().update(updates).catch(function(error){
+			displayAlert(2, "There was an error saving your dream.");
+			return;
+	  	});
+	}catch(err){
+		displayAlert(2, "There was an error saving your dream.");
+		console.log(err);
+		return;
+	}
+	
+	var dream_text = document.getElementById("dream_text").innerHTML;
+	if(!dream_text.length > 0 && !document.getElementById("dream-title").innerHTML.length > 0 ){
 		swal({
 			title:"Empty Message",
 			text: "No content was entered.",
@@ -286,6 +314,15 @@ function logDream(){
 			});
 		}, 200);
 	setTimeout(function(){window.location.href = "#/dashboard";}, 2600);
+
+}
+
+function getCurDate(){
+	var jsTimestamp = Date.now();
+	var curDate = new Date();
+	curDate.setTime(jsTimestamp * 1000);
+	dateString = curDate.toUTCString();
+	return dateString;
 }
 
 function cancelDream(){
@@ -321,6 +358,7 @@ function createDreamEntry(){
 	window.location.href = "#/log";
 }
 
+
 function initApp() {
   	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
@@ -329,12 +367,12 @@ function initApp() {
 			document.getElementById('header-login').style.display='none';
 			document.getElementById('header-logoff').style.display='block';
 
-			var displayName = user.displayName;
-          	var email = user.email;
-          	var photoURL = user.photoURL;
-         	var uid = user.uid;
-         	var refreshToken = user.refreshToken;
-          	var providerData = user.providerData;
+			displayName = user.displayName;
+          	email = user.email;
+          	photoURL = user.photoURL;
+         	uid = user.uid;
+         	refreshToken = user.refreshToken;
+          	providerData = user.providerData;
           	if(window.location.href.indexOf("#/login") > -1){
 				window.location.href = "#/dashboard";
 			}
