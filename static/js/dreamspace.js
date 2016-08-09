@@ -343,6 +343,7 @@ function getDashboardHTMLHelper(response){
 	var finalString = '';
 	for(var key in response){
 		var value = response[key];
+		console.log(value);
 		var htmlString = '' +
 		'<div class="dream-list-item">' +
             '<div class="dream-date-item">' +
@@ -354,7 +355,7 @@ function getDashboardHTMLHelper(response){
                 '<p class="dream-text-description">' + value.text + '</p>' +
             '</div>' +
     	'</div> ';
-    	finalString += htmlString;
+    	finalString = htmlString + finalString;
 	}
 	
 	document.getElementById("dream_log").innerHTML = finalString;
