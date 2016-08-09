@@ -328,22 +328,24 @@ function getCurDate(){
 }
 
 function getDashBoardHTML(){
-  	var uid = firebase.auth().currentUser.uid;
-	var db = firebase.database();
-	var ref = db.ref("dreams/" + uid + "/");
-	ref.orderByKey().on("value", function(snapshot) {
-	  console.log(snapshot.val());
-	  getDashboardHTMLHelper(snapshot.val());
-	}, function (errorObject) {
-	  console.log("The read failed: " + errorObject.code);
+	firebase.auth().onAuthStateChanged(function(user) {
+		if (user) {
+			var uid = firebase.auth().currentUser.uid;
+			var db = firebase.database();
+			var ref = db.ref("dreams/" + uid + "/");
+			ref.orderByKey().on("value", function(snapshot) {
+				getDashboardHTMLHelper(snapshot.val());
+			}, function (errorObject) {
+				console.log("The read failed: " + errorObject.code);
+			});
+		}
 	});
 }
 
 function getDashboardHTMLHelper(response){
-	var finalString = '';
+	var finalString = "</div>";
 	for(var key in response){
 		var value = response[key];
-		console.log(value);
 		var htmlString = '' +
 		'<div class="dream-list-item">' +
             '<div class="dream-date-item">' +
@@ -357,6 +359,7 @@ function getDashboardHTMLHelper(response){
     	'</div> ';
     	finalString = htmlString + finalString;
 	}
+	finalString = '<div id="dream_log" class="dream-list-log">' + finalString;
 	
 	document.getElementById("dream_log").innerHTML = finalString;
 }

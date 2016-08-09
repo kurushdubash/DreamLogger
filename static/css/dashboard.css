@@ -1,7 +1,29 @@
+@keyframes fader-in{
+  from   { opacity:0; }
+  to { opacity:1; }
+}
+@-o-keyframes fader-in{
+  from   { opacity:0; }
+  to { opacity:1; }
+}
+@-moz-keyframes fader-in{
+  from   { opacity:0; }
+  to { opacity:1; }
+}
+@-webkit-keyframes fader-in{
+  from   { opacity:0; }
+  to { opacity:1; }
+}
+
 .dream-list-log {
 	margin: 5px auto 20px auto;
 	max-width: 800px;
 	background: linear-gradient(rgba(44, 50, 86, 0.5), rgba(44, 50, 86, 0.5), rgba(59, 66, 107, 0.6));
+	-webkit-animation: fader-in .4s both linear;
+	-moz-animation: fader-in .4s both linear;
+	-o-animation: fader-in .4s both linear;
+	animation: fader-in .4s both linear;
+	animation-timing-function: linear;
 }
 .dream-list-item:hover {
 	background: linear-gradient(rgba(44, 50, 86, 1), rgba(44, 50, 86, 1), rgba(59, 66, 107, 1));
