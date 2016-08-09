@@ -274,12 +274,16 @@ function displayAlert(number, message, timeout){
 
 function logDream(){
 	try{
+		var title = document.getElementById("dream-title").innerHTML;
+		if(title.length == 0){
+			var title = getCurDate();
+		}
 		var postData = {
 			text: document.getElementById("dream_text").innerHTML,
 			timestamp: getCurDate(),
 			lucid: false,
 			notes: "",
-			title: document.getElementById("dream-title").innerHTML
+			title: title
 		}
 		var newPostKey = firebase.database().ref().child('dreams/' + uid + "/").push().key;
 		var updates = {};
@@ -320,11 +324,41 @@ function logDream(){
 function getCurDate(){
 	var stringDate = '';
 	var date = new Date();
-	stringDate = date.getMonth() +"/"+ date.getDate() +"/"+ date.getFullYear();
-	stringDate += " " + date.getHours()	+":"+ date.getMinutes() +":"+ date.getSeconds();
-	return stringDate;
+	return date.toISOString();
 }
 
+function getDashBoardHTML(){
+  	var uid = firebase.auth().currentUser.uid;
+	var db = firebase.database();
+	var ref = db.ref("dreams/" + uid + "/");
+	ref.orderByKey().on("value", function(snapshot) {
+	  console.log(snapshot.val());
+	  getDashboardHTMLHelper(snapshot.val());
+	}, function (errorObject) {
+	  console.log("The read failed: " + errorObject.code);
+	});
+}
+
+function getDashboardHTMLHelper(response){
+	var finalString = '';
+	for(var key in response){
+		var value = response[key];
+		var htmlString = '' +
+		'<div class="dream-list-item">' +
+            '<div class="dream-date-item">' +
+                '<div class="dream-date-month">FEB</div>' +
+                '<div class="dream-date-day">06</div>' +
+            '</div>' +
+            '<div class="dream-text-item">' +
+                '<div class="dream-text-heading">' + value.title + '</div>' +
+                '<p class="dream-text-description">' + value.text + '</p>' +
+            '</div>' +
+    	'</div> ';
+    	finalString += htmlString;
+	}
+	
+	document.getElementById("dream_log").innerHTML = finalString;
+}
 
 function cancelDream(){
 	if(!document.getElementById("dream_text").innerHTML.length > 0 && !document.getElementById("dream-title").innerHTML.length > 0 ){
@@ -390,7 +424,8 @@ function initApp() {
 		}
   	});
 }
+$( document ).ready( initApp() );
 
-window.onload = function() {
-  initApp();
-};
+// window.onload = function() {
+//   initApp();
+// };

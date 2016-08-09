@@ -1,52 +1,9 @@
 <div ng-include="'partials/alert.html'"></div>
 
-<div class="dream-list-log">
-    <div class="dream-list-item">
-            <div class="dream-date-item">
-                <div class="dream-date-month">FEB</div>
-                <div class="dream-date-day">06</div>
-            </div>
-            <div class="dream-text-item">
-                <div class="dream-text-heading">Dream Title</div>
-                <p class="dream-text-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit orci ante, sit amet consectetur tortor fermentum sed. Praesent ut ligula lacinia, semper sapien rhoncus, sodales mi. Fusce non massa vitae leo feugiat aliquet quis aliquet neque. Nunc at condimentum nulla, vitae malesuada nibh. Nullam tristique ipsum nec ligula tempus.</p>
-            </div>
-    </div>
-    <div class="dream-list-item">
-            <div class="dream-date-item">
-                <div class="dream-date-month">FEB</div>
-                <div class="dream-date-day">04</div>
-            </div>
-            <div class="dream-text-item">
-                <div class="dream-text-heading">Dream Title</div>
-                <p class="dream-text-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit orci ante, sit amet consectetur tortor fermentum sed. Praesent ut ligula lacinia, semper sapien rhoncus, sodales mi. Fusce non massa vitae leo feugiat aliquet quis aliquet neque. Nunc at condimentum nulla, vitae malesuada nibh. Nullam tristique ipsum nec ligula tempus.</p>
-            </div>
-    </div>
-    <div class="dream-list-item">
-        <a href="">
-            <div class="dream-date-item">
-                <div class="dream-date-month">FEB</div>
-                <div class="dream-date-day">03</div>
-            </div>
-            <div class="dream-text-item">
-                <div class="dream-text-heading">Dream Title</div>
-                <p class="dream-text-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit orci ante, sit amet consectetur tortor fermentum sed. Praesent ut ligula lacinia, semper sapien rhoncus, sodales mi. Fusce non massa vitae leo feugiat aliquet quis aliquet neque. Nunc at condimentum nulla, vitae malesuada nibh. Nullam tristique ipsum nec ligula tempus.</p>
-            </div>
-        </a>
-    </div>
-    <div class="dream-list-item">
-        <a href="">
-            <div class="dream-date-item">
-                <div class="dream-date-month">FEB</div>
-                <div class="dream-date-day">01</div>
-            </div>
-            <div class="dream-text-item">
-                <div class="dream-text-heading">Dream Title</div>
-                <p class="dream-text-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit orci ante, sit amet consectetur tortor fermentum sed. Praesent ut ligula lacinia, semper sapien rhoncus, sodales mi. Fusce non massa vitae leo feugiat aliquet quis aliquet neque. Nunc at condimentum nulla, vitae malesuada nibh. Nullam tristique ipsum nec ligula tempus.</p>
-            </div>
-        </a>
-    </div>
-
-    <div class="dream-list-divider">
+<!-- Hacky way of loading javascript on load FIX ME!-->
+<iframe onload="getDashBoardHTML()" style="display:none"></iframe>
+<div id="dream_log" class="dream-list-log">
+<!--     <div class="dream-list-divider">
         <div class="dream-list-divider-header">JANUARY 2016</div>
     </div>
 
@@ -61,65 +18,5 @@
                 <p class="dream-text-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit orci ante, sit amet consectetur tortor fermentum sed. Praesent ut ligula lacinia, semper sapien rhoncus, sodales mi. Fusce non massa vitae leo feugiat aliquet quis aliquet neque. Nunc at condimentum nulla, vitae malesuada nibh. Nullam tristique ipsum nec ligula tempus.</p>
             </div>
         </a>
-    </div>
-    <div class="dream-list-item">
-        <a href="">
-            <div class="dream-date-item">
-                <div class="dream-date-month">JAN</div>
-                <div class="dream-date-day">28</div>
-            </div>
-            <div class="dream-text-item">
-                <div class="dream-text-heading">Dream Title</div>
-                <p class="dream-text-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit orci ante, sit amet consectetur tortor fermentum sed. Praesent ut ligula lacinia, semper sapien rhoncus, sodales mi. Fusce non massa vitae leo feugiat aliquet quis aliquet neque. Nunc at condimentum nulla, vitae malesuada nibh. Nullam tristique ipsum nec ligula tempus.</p>
-            </div>
-        </a>
-    </div>
-    <div class="dream-list-item">
-        <a href="">
-            <div class="dream-date-item">
-                <div class="dream-date-month">JAN</div>
-                <div class="dream-date-day">27</div>
-            </div>
-            <div class="dream-text-item">
-                <div class="dream-text-heading">Dream Title</div>
-                <p class="dream-text-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit orci ante, sit amet consectetur tortor fermentum sed. Praesent ut ligula lacinia, semper sapien rhoncus, sodales mi. Fusce non massa vitae leo feugiat aliquet quis aliquet neque. Nunc at condimentum nulla, vitae malesuada nibh. Nullam tristique ipsum nec ligula tempus.</p>
-            </div>
-        </a>
-    </div>
-    <div class="dream-list-item">
-        <a href="">
-            <div class="dream-date-item">
-                <div class="dream-date-month">JAN</div>
-                <div class="dream-date-day">26</div>
-            </div>
-            <div class="dream-text-item">
-                <div class="dream-text-heading">Dream Title</div>
-                <p class="dream-text-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit orci ante, sit amet consectetur tortor fermentum sed. Praesent ut ligula lacinia, semper sapien rhoncus, sodales mi. Fusce non massa vitae leo feugiat aliquet quis aliquet neque. Nunc at condimentum nulla, vitae malesuada nibh. Nullam tristique ipsum nec ligula tempus.</p>
-            </div>
-        </a>
-    </div>
-    <div class="dream-list-item">
-        <a href="">
-            <div class="dream-date-item">
-                <div class="dream-date-month">JAN</div>
-                <div class="dream-date-day">25</div>
-            </div>
-            <div class="dream-text-item">
-                <div class="dream-text-heading">Dream Title</div>
-                <p class="dream-text-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit orci ante, sit amet consectetur tortor fermentum sed. Praesent ut ligula lacinia, semper sapien rhoncus, sodales mi. Fusce non massa vitae leo feugiat aliquet quis aliquet neque. Nunc at condimentum nulla, vitae malesuada nibh. Nullam tristique ipsum nec ligula tempus.</p>
-            </div>
-        </a>
-    </div>
-    <div class="dream-list-item">
-        <a href="">
-            <div class="dream-date-item">
-                <div class="dream-date-month">JAN</div>
-                <div class="dream-date-day">23</div>
-            </div>
-            <div class="dream-text-item">
-                <div class="dream-text-heading">Dream Title</div>
-                <p class="dream-text-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit orci ante, sit amet consectetur tortor fermentum sed. Praesent ut ligula lacinia, semper sapien rhoncus, sodales mi. Fusce non massa vitae leo feugiat aliquet quis aliquet neque. Nunc at condimentum nulla, vitae malesuada nibh. Nullam tristique ipsum nec ligula tempus.</p>
-            </div>
-        </a>
-    </div>
+    </div> -->
 </div>
