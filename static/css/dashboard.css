@@ -1,5 +1,6 @@
 .dream-list-log {
 	margin: 5px auto 20px auto;
+	max-width: 800px;
 }
 .dream-list-item:hover {
 	background: linear-gradient(rgba(44, 50, 86, 1), rgba(44, 50, 86, 1), rgba(59, 66, 107, 1));
@@ -14,24 +15,24 @@ a:visited {
 	color: #FFFFFF;
 	display: inline-block;
 	background: linear-gradient(rgba(44, 50, 86, 0.5), rgba(44, 50, 86, 0.5), rgba(59, 66, 107, 0.5));
-	/*padding: 10px;*/
-	/*border-radius: 3px;*/
 	font-size: 12px;
 	font-family: "Lato";
 	font-weight: 300;
 	margin-bottom: 5px;
 	width: 100%;
-	height: 80px;
+	height: 85px;
 }
 .dream-date-item {
 	float: left;
-	padding: 5px;
-	padding-top: 15px;
+	padding: 10px;
+	padding-top: 20px;
 	width: 15%;
+	min-width: 40px;
+	max-width: 70px;
 	text-align: center;
 	background-color: rgba(255,255,255, 0.2);
 	margin-right: 10px;
-	height: 80px;
+	height: 85px;
 }
 .dream-date-month {
 }
@@ -48,7 +49,7 @@ a:visited {
 	text-overflow: ellipsis;
 	display: -webkit-box;
 	line-height: 16px;
-	max-height: 70px;
+	max-height: 75px;
 	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
 }
@@ -59,4 +60,16 @@ a:visited {
 }
 .dream-text-description {
 
+}
+.dream-list-divider {
+	width: 100%;
+	height: 40px;
+	margin-bottom: 10px;
+	padding: 9px;
+	display: inline-block;
+	color: rgba(44, 50, 86, 1);
+	background: rgba(255, 255, 255, 0.5);;
+	font-size: 16px;
+	font-family: "Lato";
+	font-weight: 700;
 }
