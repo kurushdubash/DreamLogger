@@ -245,20 +245,21 @@ function handleFacebookSignIn() {
   	});
 }
 
+// Does not work yet
 function createUserAccountForFacebook(user){
-			var ref = firebase.database().ref("/users" + user.uid);
-			var postData = {
-				name: "TEST",
-				email: "TEST",
-				photo_url: "TEST",
-				created: getCurDate()
-			}
-			var updates = {};
-			updates['/users/' + user.uid ] = postData;
-	  		firebase.database().ref().update(updates).catch(function(error){
-				displayAlert(2, "There was an error creating your account");
-				return;
-	  		});
+	var ref = firebase.database().ref("/users" + user.uid);
+	var postData = {
+		name: "",
+		email: "",
+		photo_url: "",
+		created: getCurDate()
+	}
+	var updates = {};
+	updates['/users/' + user.uid ] = postData;
+		firebase.database().ref().update(updates).catch(function(error){
+		displayAlert(2, "There was an error creating your account");
+		return;
+		});
 }
 
 function handleSignIn(){
