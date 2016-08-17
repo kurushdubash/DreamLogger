@@ -159,7 +159,6 @@ function handleSignUp() {
   	});
   	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
-			//update db here
 			var postData = {
 				name: displayName,
 				email: email,
@@ -200,6 +199,7 @@ function handleFacebookSignIn() {
 	        	var token = result.credential.accessToken;
 	          	// The signed-in user info.
 	          	var user = result.user;
+	          	createUserAccountForFacebook(user);
 	        }).catch(function(error) {
 	         	var errorCode = error.code;
 	          	var errorMessage = error.message;
@@ -219,6 +219,7 @@ function handleFacebookSignIn() {
         		var token = result.credential.accessToken;
           		// The signed-in user info.
           		var user = result.user;
+          		createUserAccountForFacebook(user);
         	}).catch(function(error) {
          		var errorCode = error.code;
           		var errorMessage = error.message;
@@ -236,11 +237,28 @@ function handleFacebookSignIn() {
     } else {
         firebase.auth().signOut();
     }
+
     firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
 			window.location.href = "#/dashboard";
 		}
   	});
+}
+
+function createUserAccountForFacebook(user){
+			var ref = firebase.database().ref("/users" + user.uid);
+			var postData = {
+				name: "TEST",
+				email: "TEST",
+				photo_url: "TEST",
+				created: getCurDate()
+			}
+			var updates = {};
+			updates['/users/' + user.uid ] = postData;
+	  		firebase.database().ref().update(updates).catch(function(error){
+				displayAlert(2, "There was an error creating your account");
+				return;
+	  		});
 }
 
 function handleSignIn(){
@@ -425,6 +443,7 @@ function initApp() {
          	uid = user.uid;
          	refreshToken = user.refreshToken;
           	providerData = user.providerData;
+          	// HACKY TODO Fix me
           	if(window.location.href.indexOf("#/login") > -1){
 				window.location.href = "#/dashboard";
 			}
