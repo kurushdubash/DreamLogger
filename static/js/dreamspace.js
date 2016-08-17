@@ -159,6 +159,19 @@ function handleSignUp() {
   	});
   	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
+			//update db here
+			var postData = {
+				name: displayName,
+				email: email,
+				photo_url: "",
+				created: getCurDate()
+			}
+			var updates = {};
+			updates['/users/' + uid ] = postData;
+	  		firebase.database().ref().update(updates).catch(function(error){
+				displayAlert(2, "There was an error creating your account");
+				return;
+	  		});
 			window.location.href = "#/dashboard";
 		}
   	});

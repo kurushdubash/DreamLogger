@@ -1,1 +1,5 @@
-{}
+{
+  "projects": {
+    "dreamspace_prod": "dream-logger-6b7c0"
+  }
+}
